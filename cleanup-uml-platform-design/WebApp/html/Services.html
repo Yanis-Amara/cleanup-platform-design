@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Services — CleanUp</title>
+  <meta name="description" content="Discover our professional cleaning services: regular cleaning, deep clean, move-out cleaning, and more. Book trusted cleaners today." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/Services.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../html/Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+        <div class="nav-links">
+          <a href="../html/Home.html" class="nav-link">Home</a>
+          <a href="../html/Services.html" class="nav-link nav-link-active" id="nav-services">Services</a>
+          <a href="../html/About.html" class="nav-link">About</a>
+          <a href="../html/Contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <!-- Message Hello, Prénom Nom (rempli par auth-header.js) -->
+          <span id="nav-hello" class="nav-link" style="display:none; margin-right: 0.75rem;"></span>
+
+          <!-- Liens visibles seulement si NON connecté -->
+          <a href="../html/Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+          <!-- envoie directement vers le formulaire de réservation -->
+          <a href="../html/Home.html#bookingForm" class="btn btn-primary" id="nav-create-account">Book now</a>
+
+          <!-- Lien visible seulement si connecté (géré par auth-header.js) -->
+          <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Professional Cleaning Services</h1>
+      <p>From regular maintenance to deep cleaning, we've got you covered. All services include vetted professionals, insurance, and satisfaction guarantee.</p>
+      <div class="hero-cta">
+        <!-- le bouton principal renvoie au Home pour réserver -->
+        <a href="../html/Home.html#bookingForm" class="btn btn-primary" style="height:52px;padding:0 32px;font-size:16px;">Book now</a>
+        <a href="../html/Contact.html" class="btn btn-ghost" style="height:52px;padding:0 32px;font-size:16px;">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section" id="services">
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active" data-category="all">All Services</button>
+        <button class="filter-btn" data-category="residential">Residential</button>
+        <button class="filter-btn" data-category="commercial">Commercial</button>
+        <button class="filter-btn" data-category="specialized">Specialized</button>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="services-grid">
+        <!-- Regular Cleaning -->
+        <div class="service-card" data-category="residential">
+          <div class="service-image">
+            🧹
+            <span class="service-badge popular-badge">Most Popular</span>
+          </div>
+          <div class="service-content">
+            <div class="service-header">
+              <h3 class="service-title">Regular Cleaning</h3>
+              <!-- prix supprimé -->
+            </div>
+            <p class="service-description">Perfect for ongoing home maintenance. Our professionals handle all your routine cleaning needs efficiently.</p>
+            <ul class="service-features">
+              <li>Kitchen and bathroom cleaning</li>
+              <li>Vacuuming and mopping floors</li>
+              <li>Dusting all surfaces</li>
+              <li>Trash removal</li>
+            </ul>
+            <div class="service-footer">
+              <!-- bouton = lien vers Home#bookingForm -->
+              <a href="../html/Home.html#bookingForm" class="btn-card btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deep Clean -->
+        <div class="service-card" data-category="residential">
+          <div class="service-image">🧽</div>
+          <div class="service-content">
+            <div class="service-header">
+              <h3 class="service-title">Deep Spring Clean</h3>
+              <!-- prix supprimé -->
+            </div>
+            <p class="service-description">Thorough top-to-bottom cleaning that tackles every corner and hard-to-reach area in your home.</p>
+            <ul class="service-features">
+              <li>All regular cleaning tasks</li>
+              <li>Inside appliances (oven, fridge)</li>
+              <li>Baseboards and window sills</li>
+              <li>Behind furniture cleaning</li>
+            </ul>
+            <div class="service-footer">
+              <a href="../html/Home.html#bookingForm" class="btn-card btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Move-Out Clean -->
+        <div class="service-card" data-category="residential">
+          <div class="service-image">📦</div>
+          <div class="service-content">
+            <div class="service-header">
+              <h3 class="service-title">Move-Out Cleaning</h3>
+              <!-- prix supprimé -->
+            </div>
+            <p class="service-description">Get your deposit back with our comprehensive move-out cleaning service. Inspection-ready guaranteed.</p>
+            <ul class="service-features">
+              <li>Complete deep cleaning</li>
+              <li>Wall spot cleaning</li>
+              <li>Cabinet interiors</li>
+              <li>Inspection checklist included</li>
+            </ul>
+            <div class="service-footer">
+              <a href="../html/Home.html#bookingForm" class="btn-card btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window Cleaning -->
+        <div class="service-card" data-category="specialized">
+          <div class="service-image">🪟</div>
+          <div class="service-content">
+            <div class="service-header">
+              <h3 class="service-title">Window Cleaning</h3>
+              <!-- prix supprimé -->
+            </div>
+            <p class="service-description">Crystal-clear windows inside and out using professional equipment and streak-free solutions.</p>
+            <ul class="service-features">
+              <li>Interior and exterior cleaning</li>
+              <li>Screen cleaning included</li>
+              <li>Sill and frame cleaning</li>
+              <li>Professional squeegee tools</li>
+            </ul>
+            <div class="service-footer">
+              <a href="../html/Home.html#bookingForm" class="btn-card btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Office Cleaning -->
+        <div class="service-card" data-category="commercial">
+          <div class="service-image">🏢</div>
+          <div class="service-content">
+            <div class="service-header">
+              <h3 class="service-title">Office Cleaning</h3>
+              <!-- prix supprimé -->
+            </div>
+            <p class="service-description">Keep your workplace spotless with regular commercial cleaning tailored to your business needs.</p>
+            <ul class="service-features">
+              <li>Desk and workstation cleaning</li>
+              <li>Common area maintenance</li>
+              <li>Restroom sanitization</li>
+              <li>Flexible scheduling (after hours)</li>
+            </ul>
+            <div class="service-footer">
+              <a href="../html/Home.html#bookingForm" class="btn-card btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carpet Cleaning -->
+        <div class="service-card" data-category="specialized">
+          <div class="service-image">🛋️</div>
+          <div class="service-content">
+            <div class="service-header">
+              <h3 class="service-title">Carpet & Upholstery</h3>
+              <!-- prix supprimé -->
+            </div>
+            <p class="service-description">Deep steam cleaning for carpets, rugs, and upholstered furniture using eco-friendly solutions.</p>
+            <ul class="service-features">
+              <li>Hot water extraction method</li>
+              <li>Stain removal treatment</li>
+              <li>Deodorizing included</li>
+              <li>Fast-drying techniques</li>
+            </ul>
+            <div class="service-footer">
+              <a href="../html/Home.html#bookingForm" class="btn-card btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Book professional cleaning in just 4 simple steps</p>
+      </div>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Choose Service</h3>
+          <p>Select the cleaning service that fits your needs</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Pick Date & Time</h3>
+          <p>Choose a convenient slot from available cleaners</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Confirm Booking</h3>
+          <p>Secure payment and receive instant confirmation</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Enjoy Clean Space</h3>
+          <p>Sit back while professionals handle the rest</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose CleanUp</h2>
+        <p>We're committed to delivering exceptional cleaning services</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">✅</div>
+          <h3>Vetted Professionals</h3>
+          <p>All cleaners undergo thorough background checks and training to ensure quality and safety.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🛡️</div>
+          <h3>Fully Insured</h3>
+          <p>Comprehensive insurance coverage on all services for complete peace of mind.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">⭐</div>
+          <h3>Quality Guarantee</h3>
+          <p>Not satisfied? We'll re-clean for free or provide a full refund, no questions asked.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💚</div>
+          <h3>Eco-Friendly Options</h3>
+          <p>Choose green cleaning products that are safe for your family and the environment.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📱</div>
+          <h3>Real-Time Updates</h3>
+          <p>Track your cleaner's arrival and get notifications at every step of the process.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💳</div>
+          <h3>Transparent Pricing</h3>
+          <p>No hidden fees. What you see is what you pay with secure online payment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready for a Spotless Home?</h2>
+      <p>Book your first cleaning today and experience the CleanUp difference</p>
+      <div class="cta-buttons">
+        <!-- tu peux laisser comme ça ou aussi renvoyer vers Home#bookingForm si tu veux -->
+        <a href="../html/Sign_In.html" class="btn btn-white">Get Started</a>
+        <a href="../html/Contact.html" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot">
+          <div class="brand" style="margin-bottom:12px"><span></span><span>CleanUp</span></div>
+          <p style="color:var(--muted);font-size:14px">On‑demand home cleaning booking platform, available 7 days a week.</p>
+        </div>
+        <div class="foot">
+          <h4>Company</h4>
+          <div class="links">
+            <a href="../html/About.html">About</a>
+          </div>
+        </div>
+        <div class="foot">
+          <h4>Help</h4>
+          <div class="links">
+            <a href="../html/Contact.html">Support</a>
+          </div>
+        </div>
+        <div class="foot">
+          <h4>Legal</h4>
+          <div class="links">
+            <a href="../html/Termes_of_Service.html">Terms</a>
+            <a href="../html/Privacy_Policy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="legal">© 2025 CleanUp. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/Services.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

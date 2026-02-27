@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Account — CleanUP</title>
+  <meta name="description" content="Join CleanUp today and get access to verified home cleaning professionals in minutes." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/create-account.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="../html/Home.html" class="brand">
+        <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+        <span>CleanUp</span>
+      </a>
+      <div class="nav-actions">
+        <!-- Message Hello, Prénom Nom (rempli par auth-header.js) -->
+        <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+        <a href="../html/Services.html" class="btn btn-ghost hide-sm" id="nav-services">Services</a>
+        <a href="../html/Dashboard.html" class="btn btn-ghost">Dashboard</a>
+
+        <!-- Liens visibles seulement si NON connecté -->
+        <a href="../html/Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+        <a href="../html/Create_Account.html" class="btn btn-primary" id="nav-create-account">Create account</a>
+
+        <!-- Lien visible seulement si connecté (géré par auth-header.js) -->
+        <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Form Section -->
+    <section class="form-section">
+      <div class="form-container">
+        <div class="form-header">
+          <h1>Create your account</h1>
+          <p>Already have an account? <a href="../html/Sign_In.html">Sign in</a></p>
+        </div>
+        <!-- Signup Form -->
+        <form class="form" id="register-form">
+          <!-- Account Type -->
+          <div class="field">
+            <label class="label">I want to <span class="required">*</span></label>
+            <div class="account-type">
+              <div class="type-option active" onclick="selectAccountType('customer', this)">
+                <span class="type-icon">🏠</span>
+                <span class="type-label">Book cleaning</span>
+                <span class="type-desc">Find cleaners</span>
+              </div>
+              <div class="type-option" onclick="selectAccountType('cleaner', this)">
+                <span class="type-icon">🧹</span>
+                <span class="type-label">Offer services</span>
+                <span class="type-desc">Become a cleaner</span>
+              </div>
+            </div>
+            <input type="hidden" id="accountType" name="accountType" value="customer" required>
+          </div>
+
+          <!-- Name Fields -->
+          <div class="field-row">
+            <div class="field">
+              <label class="label" for="firstName">First name <span class="required">*</span></label>
+              <input 
+                class="input" 
+                type="text" 
+                id="firstName" 
+                name="firstName" 
+                placeholder="John" 
+                required
+              >
+              <span class="error-message">Please enter your first name</span>
+            </div>
+            <div class="field">
+              <label class="label" for="lastName">Last name <span class="required">*</span></label>
+              <input 
+                class="input" 
+                type="text" 
+                id="lastName" 
+                name="lastName" 
+                placeholder="Doe" 
+                required
+              >
+              <span class="error-message">Please enter your last name</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="field">
+            <label class="label" for="email">Email address <span class="required">*</span></label>
+            <input 
+              class="input" 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="you@example.com" 
+              required
+            >
+            <span class="error-message">Please enter a valid email address</span>
+            <span class="success-message">✓ Email is available</span>
+          </div>
+
+          <!-- Phone -->
+          <div class="field">
+            <label class="label" for="phone">Phone number <span class="required">*</span></label>
+            <input 
+              class="input" 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              placeholder="+44 7700 900000" 
+              required
+            >
+            <span class="error-message">Please enter a valid phone number</span>
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <label class="label" for="password">Password <span class="required">*</span></label>
+            <div class="password-wrapper">
+              <input 
+                class="input" 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Create a strong password" 
+                required
+                minlength="8"
+              >
+              <button type="button" class="toggle-password" onclick="togglePassword('password')" aria-label="Toggle password visibility">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-fill" id="strengthFill"></div>
+              </div>
+              <div class="strength-text" id="strengthText">Password strength: Weak</div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field">
+            <label class="label" for="confirmPassword">Confirm password <span class="required">*</span></label>
+            <div class="password-wrapper">
+              <input 
+                class="input" 
+                type="password" 
+                id="confirmPassword" 
+                name="confirmPassword" 
+                placeholder="Re-enter your password" 
+                required
+              >
+              <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')" aria-label="Toggle password visibility">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <span class="error-message">Passwords do not match</span>
+            <span class="success-message">✓ Passwords match</span>
+          </div>
+
+          <!-- Terms & Conditions -->
+          <div class="checkbox-field">
+            <input type="checkbox" id="terms" name="terms" class="checkbox" required>
+            <label for="terms" class="checkbox-label">
+              I agree to CleanUp's <a href="../html/Termes_of_Service.html">Terms of Service</a> and <a href="../html/Privacy_Policy.html">Privacy Policy</a>
+            </label>
+          </div>
+
+          <!-- Marketing Opt-in -->
+          <div class="checkbox-field">
+            <input type="checkbox" id="marketing" name="marketing" class="checkbox">
+            <label for="marketing" class="checkbox-label">
+              Send me updates, tips, and special offers via email
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Create account</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Visual Section -->
+    <section class="visual-section">
+      <div class="visual-content">
+        <h2>Join thousands of happy customers</h2>
+        <p>Start your journey to a cleaner home with verified professionals, flexible scheduling, and secure payments.</p>
+        
+        <div class="benefits">
+          <div class="benefit">
+            <div class="benefit-icon">✅</div>
+            <div class="benefit-content">
+              <h3>Verified professionals</h3>
+              <p>All cleaners are background-checked and vetted for quality.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">📅</div>
+            <div class="benefit-content">
+              <h3>Flexible scheduling</h3>
+              <p>Book, reschedule, or cancel anytime with just a few clicks.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🛡️</div>
+            <div class="benefit-content">
+              <h3>Fully insured</h3>
+              <p>All services come with comprehensive insurance coverage.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">💳</div>
+            <div class="benefit-content">
+              <h3>Secure payments</h3>
+              <p>Pay safely online with encrypted transactions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-number">15k+</div>
+            <div class="stat-label">Happy customers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">4.8★</div>
+            <div class="stat-label">Average rating</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">50k+</div>
+            <div class="stat-label">Cleanings done</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/create-account.js"></script>
+  <script src="../js/register.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

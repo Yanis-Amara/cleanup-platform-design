@@ -1,0 +1,744 @@
+/* ========================================
+   CleanUp - Create Account Page Styles
+   ======================================== */
+
+/* CSS Variables */
+:root {
+    --primary: #10B981;
+    --primary-dark: #059669;
+    --primary-light: #ECFDF5;
+    --accent: #3B82F6;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --text: #1E293B;
+    --muted: #64748B;
+    --ring: rgba(16, 185, 129, .25);
+    --border: #E2E8F0;
+    --hover: #F1F5F9;
+    --error: #EF4444;
+    --success: #10B981;
+  }
+  
+  /* Reset & Base Styles */
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* ========================================
+     ANIMATIONS
+     ======================================== */
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* ========================================
+     HEADER
+     ======================================== */
+  
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text);
+  }
+  
+  .logo {
+    width: 40px;         /* taille du logo */
+    height: 40px;
+    display: inline-block;
+    object-fit: contain;  /* l’image remplit le carré sans être coupée */
+    border-radius: 12px;  /* arrondi comme sur ton visuel */
+    background: none;
+    box-shadow: 0 3px 10px rgba(16,185,129,.25);
+  }
+  
+  
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  /* ========================================
+     BUTTONS
+     ======================================== */
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+  }
+  
+  .btn-ghost:hover {
+    background: var(--hover);
+    border-color: #CBD5E1;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, .25);
+  }
+  
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, .35);
+    transform: translateY(-1px);
+  }
+  
+  /* ========================================
+     MAIN LAYOUT
+     ======================================== */
+  
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 72px);
+  }
+  
+  /* ========================================
+     FORM SECTION
+     ======================================== */
+  
+  .form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    background: white;
+    animation: slideInLeft 0.8s ease-out;
+    overflow-y: auto;
+  }
+  
+  .form-container {
+    max-width: 460px;
+    width: 100%;
+  }
+  
+  .form-header {
+    margin-bottom: 28px;
+  }
+  
+  .form-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  
+  .form-header p {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0;
+  }
+  
+  .form-header p a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .form-header p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ========================================
+     SOCIAL LOGIN
+     ======================================== */
+  
+  .social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  
+  .social-btn:hover {
+    background: var(--hover);
+    border-color: #CBD5E1;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+  }
+  
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* ========================================
+     DIVIDER
+     ======================================== */
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  
+  /* ========================================
+     FORM FIELDS
+     ======================================== */
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .label {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .required {
+    color: var(--error);
+    font-size: 16px;
+  }
+  
+  .input {
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: all .3s ease;
+    font-size: 15px;
+  }
+  
+  .input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--ring);
+    background: white;
+  }
+  
+  .input.error {
+    border-color: var(--error);
+  }
+  
+  .input.success {
+    border-color: var(--success);
+  }
+  
+  .error-message,
+  .success-message {
+    font-size: 13px;
+    margin-top: -2px;
+    display: none;
+  }
+  
+  .error-message {
+    color: var(--error);
+  }
+  
+  .success-message {
+    color: var(--success);
+  }
+  
+  .input.error ~ .error-message {
+    display: block;
+  }
+  
+  .input.success ~ .success-message {
+    display: block;
+  }
+  
+  /* ========================================
+     PASSWORD FIELD
+     ======================================== */
+  
+  .password-wrapper {
+    position: relative;
+  }
+  
+  .password-wrapper .input {
+    padding-right: 48px;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 8px;
+    transition: color .3s ease;
+  }
+  
+  .toggle-password:hover {
+    color: var(--text);
+  }
+  
+  /* ========================================
+     PASSWORD STRENGTH
+     ======================================== */
+  
+  .password-strength {
+    margin-top: 8px;
+  }
+  
+  .strength-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  
+  .strength-fill {
+    height: 100%;
+    width: 0;
+    transition: all .3s ease;
+    border-radius: 999px;
+  }
+  
+  .strength-text {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  /* ========================================
+     ACCOUNT TYPE SELECTION
+     ======================================== */
+  
+  .account-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  
+  .type-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .3s ease;
+    background: white;
+  }
+  
+  .type-option:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  
+  .type-option.active {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  
+  .type-icon {
+    font-size: 28px;
+  }
+  
+  .type-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .type-desc {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+  
+  /* ========================================
+     CHECKBOX FIELDS
+     ======================================== */
+  
+  .checkbox-field {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  
+  .checkbox-label {
+    font-size: 14px;
+    color: var(--text);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  
+  .checkbox-label a {
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .checkbox-label a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ========================================
+     SUBMIT BUTTON
+     ======================================== */
+  
+  .submit-btn {
+    height: 52px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, .25);
+    margin-top: 6px;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, .35);
+    transform: translateY(-1px);
+  }
+  
+  .submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* ========================================
+     VISUAL SECTION
+     ======================================== */
+  
+  .visual-section {
+    background: linear-gradient(135deg, #F0FDF4 0%, #E0F2FE 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    animation: slideInRight 0.8s ease-out;
+  }
+  
+  .visual-content {
+    max-width: 500px;
+  }
+  
+  .visual-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+  
+  .visual-content p {
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 0 32px;
+    line-height: 1.6;
+  }
+  
+  /* ========================================
+     BENEFITS
+     ======================================== */
+  
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: start;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+    transition: all .3s ease;
+  }
+  
+  .benefit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+  }
+  
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-light), #D1FAE5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  
+  .benefit-content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+  
+  .benefit-content p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  /* ========================================
+     STATS
+     ======================================== */
+  
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  
+  .stat {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+  }
+  
+  .stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+  }
+  
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  
+  /* ========================================
+     RESPONSIVE DESIGN
+     ======================================== */
+  
+  @media (max-width: 980px) {
+    .main {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    
+    .visual-section {
+      order: -1;
+      padding: 40px 24px;
+    }
+    
+    .form-section {
+      padding: 40px 24px;
+    }
+    
+    .visual-content h2 {
+      font-size: 28px;
+    }
+    
+    .visual-content p {
+      font-size: 16px;
+    }
+    
+    .stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 620px) {
+    .form-section {
+      padding: 32px 20px;
+    }
+    
+    .form-header h1 {
+      font-size: 26px;
+    }
+    
+    .social-login {
+      gap: 10px;
+    }
+    
+    .benefits {
+      gap: 16px;
+    }
+    
+    .account-type {
+      grid-template-columns: 1fr;
+    }
+  }
+  

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — CleanUp</title>
+  <meta name="description" content="Learn more about CleanUp, the on-demand cleaning platform connecting customers with vetted, insured cleaning professionals." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/about.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../html/Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="../html/Home.html" class="nav-link">Home</a>
+          <a href="../html/Services.html" class="btn btn-ghost hide-sm" id="nav-services">Services</a>
+          <a href="../html/About.html" class="nav-link active">About</a>
+          <a href="../html/Contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <!-- Message Hello, Prénom Nom (rempli par auth-header.js) -->
+          <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+          <!-- Liens visibles seulement si NON connecté -->
+          <a href="../html/Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+          <a href="../html/Create_Account.html" class="btn btn-primary" id="nav-create-account">Book now</a>
+
+          <!-- Lien visible seulement si connecté (géré par auth-header.js) -->
+          <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-kicker">About CleanUp</div>
+        <h1>Making clean homes simple, safe and stress‑free</h1>
+        <p>
+          CleanUp is an on‑demand platform that connects busy people with trusted, fully‑insured cleaning professionals, in just a few clicks.
+        </p>
+        <p>
+          The goal is to remove the hassle from cleaning so customers can focus on what matters, while cleaners grow stable, flexible income.
+        </p>
+        <div class="hero-badges">
+          <span class="hero-badge">Launched in 2025</span>
+          <span class="hero-badge">Based in the UK</span>
+          <span class="hero-badge">Customer‑first mission</span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Today at a glance</h2>
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Cleanings completed</div>
+            <div class="metric-value">50k+</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Average rating</div>
+            <div class="metric-value">4.8★</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Active cities</div>
+            <div class="metric-value">25+</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Verified cleaners</div>
+            <div class="metric-value">1.2k+</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Mission & Story -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Our story</div>
+        <h2>From side project to trusted platform</h2>
+        <p>
+          CleanUp started as a simple idea: booking a cleaner should feel as easy and transparent as ordering food or a ride, with zero stress about who is coming to your home.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="story-block">
+          <h3>Mission</h3>
+          <p>
+            CleanUp exists to make professional cleaning accessible, reliable and fairly paid, for both customers and cleaners.
+          </p>
+          <div class="values">
+            <div class="value-card">
+              <div class="value-title">Trust first</div>
+              <div class="value-text">
+                Every cleaner is vetted, reviewed and insured so bookings always feel safe and predictable.
+              </div>
+            </div>
+            <div class="value-card">
+              <div class="value-title">Fair work</div>
+              <div class="value-text">
+                Tools, ratings and clear pricing help cleaners build sustainable, flexible careers.
+              </div>
+            </div>
+            <div class="value-card">
+              <div class="value-title">Simple experience</div>
+              <div class="value-text">
+                Clean interfaces, quick booking and clear communication reduce friction at every step.
+              </div>
+            </div>
+            <div class="value-card">
+              <div class="value-title">Sustainable choices</div>
+              <div class="value-text">
+                Eco‑friendly options and smart routing help reduce waste and unnecessary travel.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stats-band">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-number">30s</div>
+                <div class="stat-label">Average time to book</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Repeat bookings each month</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Hidden fees on any job</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </section>
+
+  <!-- Project team -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Project team</div>
+        <h2>Built with Staffordshire University</h2>
+        <p>
+          CleanUp is currently developed as a group project by six students at Staffordshire University in Stoke-on-Trent, in collaboration with the computing department.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <article class="member-card">
+          <h3 class="member-name">Thierry DU</h3>
+          <p class="member-role">Full‑stack developer (frontend & backend)</p>
+          <p class="member-detail">
+            Designs and implements both the user interface and the server‑side logic that power the CleanUp platform.
+          </p>
+        </article>
+
+        <article class="member-card">
+          <h3 class="member-name">Arthur DONNAT</h3>
+          <p class="member-role">Frontend developer</p>
+          <p class="member-detail">
+            Focuses on building responsive pages, components and interactions for a smooth experience on web.
+          </p>
+        </article>
+
+        <article class="member-card">
+          <h3 class="member-name">Arthur DELANNOY</h3>
+          <p class="member-role">Frontend developer</p>
+          <p class="member-detail">
+            Works on layouts, visual consistency and implementation of the design system across the application.
+          </p>
+        </article>
+
+        <article class="member-card">
+          <h3 class="member-name">Yanis AMARA</h3>
+          <p class="member-role">Product design & UX</p>
+          <p class="member-detail">
+            Shapes user journeys, screen flows and interface details to keep the platform clear and easy to use.
+          </p>
+        </article>
+
+        <article class="member-card">
+          <h3 class="member-name">Hadi HANNAWI </h3>
+          <p class="member-role">Product design & UX</p>
+          <p class="member-detail">
+            Contributes to the visual identity, prototypes and usability tests to refine the overall experience.
+          </p>
+        </article>
+
+        <article class="member-card">
+          <h3 class="member-name">Ibrahima DIALLO</h3>
+          <p class="member-role">Communication & outreach</p>
+          <p class="member-detail">
+            Handles communication, gathers feedback from users and helps present the project to partners and supervisors.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Safety -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Trust & safety</div>
+        <h2>What makes CleanUp different</h2>
+        <p>
+          A good cleaning platform is more than a marketplace: it is a layer of trust, protection and clarity between people who open their doors and those who do the work.
+        </p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-list">
+          <div class="trust-item">
+            <div class="trust-icon">🧾</div>
+            <div>
+              <div class="trust-title">Transparent pricing</div>
+              <p class="trust-text">
+                Clear hourly rates, no surprise charges and instant quotes before you confirm a booking.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🛡️</div>
+            <div>
+              <div class="trust-title">Insurance included</div>
+              <p class="trust-text">
+                Every job is covered by platform insurance so both customers and cleaners are protected.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">⭐</div>
+            <div>
+              <div class="trust-title">Real reviews & ratings</div>
+              <p class="trust-text">
+                After each visit, customers leave feedback that helps others choose the right cleaner.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🌍</div>
+            <div>
+              <div class="trust-title">Local focus</div>
+              <p class="trust-text">
+                CleanUp grows city by city, partnering with local professionals who know their area.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="quote-card">
+          <p class="quote-text">
+            “People trust us with their homes and their time. The job is not just matching supply and demand; it is building long‑term relationships where everyone feels respected and fairly treated.”
+          </p>
+          <div class="quote-author">CleanUp founding team</div>
+          <div class="quote-role">Product, operations & cleaner community</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div>
+          <h2 class="cta-title">Ready to see CleanUp in action?</h2>
+          <p class="cta-text">
+            Create an account in under a minute, book your first cleaning or apply to become a cleaner on the platform.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="../html/Create_Account.html" class="btn btn-white">Get started</a>
+          <a href="../html/Contact.html" class="btn btn-outline">Talk to the team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot">
+          <div class="brand" style="margin-bottom:10px">
+            <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+            <span>CleanUp</span>
+          </div>
+          <p style="font-size:14px;color:var(--muted)">
+            On‑demand home and office cleaning, built to be simple, transparent and trustworthy.
+          </p>
+        </div>
+        <div class="foot">
+          <h4>Company</h4>
+          <div class="links">
+            <a href="../html/About.html">About</a>
+          </div>
+        </div>
+        <div class="foot">
+          <h4>Help</h4>
+          <div class="links">
+            <a href="../html/Contact.html">Support</a>
+          </div>
+        </div>
+        <div class="foot">
+          <h4>Legal</h4>
+          <div class="links">
+            <a href="../html/Termes_of_Service.html">Terms</a>
+            <a href="../html/Privacy_Policy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="legal">© 2025 CleanUp. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../js/about.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

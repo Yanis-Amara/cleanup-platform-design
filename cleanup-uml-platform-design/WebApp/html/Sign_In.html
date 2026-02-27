@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In — CleanUp</title>
+  <meta name="description" content="Sign in to your CleanUp account to manage bookings and access your cleaning services." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/sign_in.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href="../html/Home.html" class="brand">
+        <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+        <span>CleanUp</span>
+      </a>
+      <div class="nav-actions">
+        <!-- Hello, Prénom Nom (rempli par auth-header.js) -->
+        <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+        <!-- Liens visibles seulement si NON connecté -->
+        <a href="../html/Home.html" class="btn btn-ghost" id="nav-sign-in">Back to home</a>
+        <a href="../html/Create_Account.html" class="btn btn-primary" id="nav-create-account">Create account</a>
+
+        <!-- Lien visible seulement si connecté -->
+        <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Form Section -->
+    <section class="form-section">
+      <div class="form-container">
+        <div class="form-header">
+          <h1>Welcome back</h1>
+          <p>New to CleanUp ? <a href="../html/Create_Account.html">Create an account</a></p>
+        </div>
+        <!-- Login Form -->
+        <form class="form" id="login-form">
+          <div class="field">
+            <label class="label" for="email">Email address</label>
+            <input 
+              class="input" 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="you@example.com" 
+              required
+            >
+            <span class="error-message">Please enter a valid email address</span>
+          </div>
+
+          <div class="field">
+            <label class="label" for="password">Password</label>
+            <div class="password-wrapper">
+              <input 
+                class="input" 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Enter your password" 
+                required
+                minlength="8"
+              >
+              <button type="button" class="toggle-password" onclick="togglePassword()" aria-label="Toggle password visibility">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <span class="error-message">Password must be at least 8 characters</span>
+          </div>
+
+          <div class="form-options">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="remember" name="remember" class="checkbox">
+              <label for="remember" class="checkbox-label">Remember me</label>
+            </div>
+            <a href="../html/Forgot_password.html" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="submit-btn">Sign in</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Visual Section -->
+    <section class="visual-section">
+      <div class="visual-content">
+        <h2>Your home, cleaner than ever</h2>
+        <p>Access your bookings, manage cleaners, and enjoy a spotless home—all in one place.</p>
+        
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📅</div>
+            <div class="feature-content">
+              <h3>Easy booking management</h3>
+              <p>Schedule, reschedule, or cancel cleanings with just a few clicks.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">⭐</div>
+            <div class="feature-content">
+              <h3>Track & rate cleaners</h3>
+              <p>Real-time updates and the ability to rate your experience.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">💳</div>
+            <div class="feature-content">
+              <h3>Secure payments</h3>
+              <p>Save payment methods and view your billing history safely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/Sign_In.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

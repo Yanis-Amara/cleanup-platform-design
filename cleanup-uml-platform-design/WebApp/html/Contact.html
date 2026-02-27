@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us — CleanUp</title>
+  <meta name="description" content="Get in touch with CleanUp. We're here to help with any questions about our cleaning services. Call, email, or visit us today." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../html/Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="../html/Home.html" class="nav-link">Home</a>
+          <a href="../html/Services.html" class="btn btn-ghost hide-sm" id="nav-services">Services</a>
+          <a href="../html/About.html" class="nav-link">About</a>
+          <a href="../html/Contact.html" class="nav-link active">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <!-- Message Hello, Prénom Nom (rempli par auth-header.js) -->
+          <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+          <!-- Liens visibles seulement si NON connecté -->
+          <a href="../html/Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+          <a href="../html/Create_Account.html" class="btn btn-primary" id="nav-create-account">Book now</a>
+
+          <!-- Lien visible seulement si connecté (géré par auth-header.js) -->
+          <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Get in Touch</h1>
+      <p>Have questions about our services? Need a custom quote? We're here to help. Reach out and we'll get back to you within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Left Side - Contact Info -->
+        <div class="contact-info">
+          <div class="info-header">
+            <h2>We'd love to hear from you</h2>
+            <p>Whether you have a question about our services, pricing, or anything else, our team is ready to answer all your questions.</p>
+          </div>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="method-icon">📞</div>
+              <div class="method-content">
+                <h3>Phone</h3>
+                <p>Mon-Fri from 8am to 8pm</p>
+                <a href="tel:+442079460000">+44 20 7946 0000</a>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="method-icon">✉️</div>
+              <div class="method-content">
+                <h3>Email</h3>
+                <p>We'll reply within 24 hours</p>
+                <!-- correction du mailto -->
+                <a href="mailto:hello@cleanup.com">hello@cleanup.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="method-icon">📍</div>
+              <div class="method-content">
+                <h3>Office</h3>
+                <p>Visit us at our location</p>
+                <a href="https://maps.google.com" target="_blank">123 Clean Street, London, SW1A 1AA</a>
+              </div>
+            </div>
+
+            <!-- Bloc Live Chat supprimé -->
+          </div>
+
+          <!-- Map -->
+          <div class="map-container">
+            <div class="map-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <rcle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <p style="margin:0;font-weight:500">123 Clean Street, London</p>
+              <a href="https://maps.google.com" target="_blank" style="color:var(--primary);font-size:14px">View on Google Maps →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side - Contact Form -->
+        <div class="contact-form-section">
+          <div class="form-card">
+            <h3>Send us a message</h3>
+            <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+
+            <div class="success-message" id="successMessage">
+              ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+            </div>
+
+            <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
+              <div class="field-row">
+                <div class="field">
+                  <label class="label" for="firstName">First name <span class="required">*</span></label>
+                  <input 
+                    class="input" 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    placeholder="John" 
+                    required
+                  >
+                  <span class="error-message">Please enter your first name</span>
+                </div>
+                <div class="field">
+                  <label class="label" for="lastName">Last name <span class="required">*</span></label>
+                  <input 
+                    class="input" 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    placeholder="Doe" 
+                    required
+                  >
+                  <span class="error-message">Please enter your last name</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="email">Email address <span class="required">*</span></label>
+                <input 
+                  class="input" 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="you@example.com" 
+                  required
+                >
+                <span class="error-message">Please enter a valid email address</span>
+              </div>
+
+              <div class="field">
+                <label class="label" for="phone">Phone number</label>
+                <input 
+                  class="input" 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  placeholder="+44 7700 900000"
+                >
+              </div>
+
+              <div class="field">
+                <label class="label" for="subject">Subject <span class="required">*</span></label>
+                <select class="select" id="subject" name="subject" required>
+                  <option value="">Select a topic</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="quote">Request a Quote</option>
+                  <option value="booking">Booking Question</option>
+                  <option value="complaint">Issue or Complaint</option>
+                  <option value="partnership">Business Partnership</option>
+                  <option value="careers">Careers</option>
+                  <option value="other">Other</option>
+                </select>
+                <span class="error-message">Please select a subject</span>
+              </div>
+
+              <div class="field">
+                <label class="label" for="message">Message <span class="required">*</span></label>
+                <textarea 
+                  class="textarea" 
+                  id="message" 
+                  name="message" 
+                  placeholder="Tell us more about your inquiry..." 
+                  required
+                ></textarea>
+                <span class="error-message">Please enter your message</span>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+              <p class="form-note">We'll get back to you within 24 hours</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours Section -->
+  <section class="hours-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>When We're Available</h2>
+        <p>Our customer support and booking services are available during these hours</p>
+      </div>
+      <div class="hours-grid">
+        <div class="hours-card">
+          <div class="hours-icon">🕐</div>
+          <h3>Customer Support</h3>
+          <p><strong>Mon-Fri:</strong> 8am - 8pm<br><strong>Sat-Sun:</strong> 9am - 6pm</p>
+        </div>
+        <div class="hours-card">
+          <div class="hours-icon">📅</div>
+          <h3>Booking Available</h3>
+          <p><strong>Every day:</strong> 7am - 11pm<br>Book online 24/7</p>
+        </div>
+        <div class="hours-card">
+          <div class="hours-icon">🧹</div>
+          <h3>Service Hours</h3>
+          <p><strong>Every day:</strong> 7am - 10pm<br>Flexible scheduling</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to common questions. Can't find what you're looking for? Contact us directly.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <h3>How quickly can I book a cleaning?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            You can book a cleaner as soon as the next day, depending on availability. Same-day bookings are sometimes possible for urgent requests. Simply check our booking calendar for available slots.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <h3>What areas do you serve?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            We currently serve London and surrounding areas within a 30-mile radius. Enter your postcode during booking to check if we cover your location.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <h3>Do I need to provide cleaning supplies?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            No, our cleaners come fully equipped with all necessary supplies and equipment. However, if you prefer us to use your own products (for allergies or preferences), just let us know.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <h3>What is your cancellation policy?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            You can cancel or reschedule up to 24 hours before your appointment at no charge. Cancellations within 24 hours may incur a small fee. Check our full policy in your account.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <h3>Are your cleaners insured and vetted?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, all our cleaning professionals undergo thorough background checks, are fully insured, and receive ongoing training. Your safety and peace of mind are our top priorities.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <h3>How do I pay for services?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            We accept all major credit and debit cards through our secure online payment system. Payment is processed after your cleaning is completed to your satisfaction.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot">
+          <div class="brand">
+            <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+            <span>CleanUp</span>
+          </div>
+          <p class="legal">
+            On‑demand home cleaning booking platform, available 7 days a week.
+          </p>
+        </div>
+        <div class="foot">
+          <h4>Company</h4>
+          <div class="links">
+            <a href="#">Careers</a>
+          </div>
+        </div>
+        <div class="foot">
+          <h4>Help</h4>
+          <div class="links">
+            <a href="../html/Contact.html">Support</a>
+          </div>
+        </div>
+        <div class="foot">
+          <h4>Legal</h4>
+          <div class="links">
+            <a href="../html/Termes_of_Service.html">Terms</a>
+            <a href="../html/Privacy_Policy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="legal">© 2025 CleanUp. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../js/contact.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

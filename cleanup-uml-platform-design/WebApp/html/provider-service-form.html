@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cleanup - Submit Cleaning Service</title>
+<style>
+  :root{
+    --bg:#f6f8fa;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#2563eb;
+    --radius:12px;
+    --max-width:900px;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    margin:0;
+    padding:24px;
+    background:linear-gradient(180deg,var(--bg),#ffffff);
+    color:#0f172a;
+    display:flex;
+    justify-content:center;
+  }
+
+  .container{
+    width:100%;
+    max-width:var(--max-width);
+  }
+
+  header{
+    margin-bottom:18px;
+  }
+  header h1{
+    margin:0;
+    font-size:1.4rem;
+    letter-spacing:-0.2px;
+  }
+  header p{ margin:6px 0 0; color:var(--muted); font-size:0.95rem }
+
+  form.card{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow: 0 6px 20px rgba(15,23,42,0.06);
+    display:grid;
+    gap:14px;
+  }
+
+  .grid{
+    display:grid;
+    gap:12px;
+  }
+  .cols-2{ grid-template-columns: 1fr 1fr; }
+  .cols-3{ grid-template-columns: repeat(3, 1fr); }
+  label{
+    display:block;
+    font-size:0.9rem;
+    margin-bottom:6px;
+    color:#0f172a;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea,
+  select,
+  input[type="time"],
+  input[type="date"]{
+    width:100%;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid #e6e9ee;
+    font-size:0.95rem;
+    background:transparent;
+  }
+  textarea{ min-height:110px; resize:vertical; }
+
+  .hint{ font-size:0.85rem; color:var(--muted); margin-top:4px }
+
+  .section{
+    padding:12px;
+    border-radius:10px;
+    background:linear-gradient(180deg,#fbfdff,#ffffff);
+    border:1px solid #f1f5f9;
+  }
+
+  .file-preview{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .file-preview img{
+    width:84px;
+    height:84px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #eef2ff;
+  }
+
+  .row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border-radius:10px;
+    background:var(--accent);
+    color:white;
+    border:0;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .btn[disabled]{ opacity:0.6; cursor:default }
+
+  .secondary{
+    background:transparent;
+    color:var(--accent);
+    border:1px solid #e6eefc;
+  }
+
+  .small{ font-size:0.85rem; padding:8px 10px; border-radius:8px; }
+
+  .errors{ color:#b91c1c; font-size:0.9rem; }
+
+  footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-top:6px;
+  }
+
+  /* responsive */
+  @media (max-width:720px){
+    .cols-2,.cols-3{ grid-template-columns: 1fr; }
+    footer{ flex-direction:column; align-items:stretch; }
+  }
+
+</style>
+</head>
+<body>
+  <main class="container" aria-live="polite">
+    <header>
+      <h1>Submit a Cleaning Service</h1>
+      <p>Fill the form below to add your cleaning service offering. Submissions will be verified by the Cleanup team before going live.</p>
+    </header>
+
+    <form id="serviceForm" class="card" novalidate>
+      <!-- Basic info -->
+      <div class="section">
+        <div class="grid cols-2">
+          <div>
+            <label for="title">Service Title <span aria-hidden="true">*</span></label>
+            <input id="title" name="title" type="text" required maxlength="120" placeholder="e.g. Deep Home Cleaning - 2hrs" />
+            <div class="hint">Short descriptive title.</div>
+          </div>
+
+          <div>
+            <label for="category">Category <span aria-hidden="true">*</span></label>
+            <select id="category" name="category" required>
+              <option value="">Choose category</option>
+              <option>Home Cleaning</option>
+              <option>Office Cleaning</option>
+              <option>Carpet / Upholstery</option>
+              <option>Move-in / Move-out</option>
+              <option>Window Cleaning</option>
+              <option>Specialized</option>
+            </select>
+            <div class="hint">Pick the closest match.</div>
+          </div>
+        </div>
+
+        <label for="description">Description <span aria-hidden="true">*</span></label>
+        <textarea id="description" name="description" required maxlength="2000" placeholder="Describe what is included, number of cleaners, equipment, eco products, etc."></textarea>
+
+        <div class="grid cols-2">
+          <div>
+            <label for="price">Base Price<span aria-hidden="true">*</span></label>
+            <input id="price" name="price" type="number" step="0.01" min="0" required placeholder="e.g. 45.00" />
+            <div class="hint">Enter the base price. You can add more pricing details in the description.</div>
+          </div>
+
+          <div>
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency" aria-label="Currency">
+              <option>EUR</option>
+              <option>GBP</option>
+              <option>USD</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid cols-2">
+          <div>
+            <label for="location">Service Location (city / postal code) <span aria-hidden="true">*</span></label>
+            <input id="location" name="location" type="text" required placeholder="e.g. London, SW1A" />
+          </div>
+          <div>
+            <label for="serviceType">Service Type</label>
+            <select id="serviceType" name="serviceType">
+              <option>One-off</option>
+              <option>Recurring</option>
+              <option>On-demand</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Provider info -->
+      <div class="section">
+        <h3 style="margin:0 0 8px 0">Provider Info</h3>
+        <div class="grid cols-2">
+          <div>
+            <label for="providerName">Provider / Company Name <span aria-hidden="true">*</span></label>
+            <input id="providerName" name="providerName" type="text" required placeholder="Your company or personal name" />
+          </div>
+          <div>
+            <label for="providerEmail">Contact Email <span aria-hidden="true">*</span></label>
+            <input id="providerEmail" name="providerEmail" type="email" required placeholder="name@example.com" />
+          </div>
+        </div>
+
+        <div class="grid cols-3" style="margin-top:10px">
+          <div>
+            <label for="minHours">Min Hours</label>
+            <input id="minHours" name="minHours" type="number" min="0" placeholder="e.g. 2" />
+          </div>
+          <div>
+            <label for="maxPeople">Max Cleaners</label>
+            <input id="maxPeople" name="maxPeople" type="number" min="1" placeholder="e.g. 2" />
+          </div>
+          <div>
+            <label for="responseTime">Typical Response Time</label>
+            <input id="responseTime" name="responseTime" type="text" placeholder="e.g. within 24 hours" />
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <label>Availability (choose weekdays)</label>
+          <div class="row" style="flex-wrap:wrap;">
+            <label><input type="checkbox" name="availability" value="Mon"> Mon</label>
+            <label><input type="checkbox" name="availability" value="Tue"> Tue</label>
+            <label><input type="checkbox" name="availability" value="Wed"> Wed</label>
+            <label><input type="checkbox" name="availability" value="Thu"> Thu</label>
+            <label><input type="checkbox" name="availability" value="Fri"> Fri</label>
+            <label><input type="checkbox" name="availability" value="Sat"> Sat</label>
+            <label><input type="checkbox" name="availability" value="Sun"> Sun</label>
+          </div>
+          <div class="hint">Availability is optional but recommended.</div>
+        </div>
+      </div>
+
+      <!-- Media / verification -->
+      <div class="section">
+        <div class="grid cols-2">
+          <div>
+            <label for="images">Upload Images</label>
+            <input id="images" name="images" type="file" accept="image/*" multiple />
+            <div class="hint">Max 6 images. Client-side preview available.</div>
+            <div id="preview" class="file-preview" aria-live="polite"></div>
+          </div>
+
+          <div>
+            <label for="terms">Proof / Verification Documents (optional)</label>
+            <input id="verificationDocs" name="verificationDocs" type="file" accept=".pdf,.jpg,.png" multiple />
+            <div class="hint">E.g., insurance, company registration — will be shown to admins for verification.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="hint">
+          Submissions are saved with status <strong>pending</strong> until an admin verifies the provider and the service.
+        </div>
+      </div>
+
+      <!-- Hidden status field (set by server ideally) -->
+      <input type="hidden" name="status" value="pending" />
+
+      <!-- Errors & actions -->
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <div class="errors" id="formErrors" role="status" aria-live="assertive"></div>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn secondary small" id="saveDraft">Save Draft</button>
+          <button type="submit" class="btn" id="submitBtn">Submit for Verification</button>
+        </div>
+      </div>
+
+      <footer>
+        <div class="hint">By submitting you confirm that your information is accurate and you accept our provider terms.</div>
+        <div id="result" aria-live="polite"></div>
+      </footer>
+    </form>
+  </main>
+
+<script>
+/*
+  Client-side behaviour:
+  - preview images
+  - form validation
+  - assemble FormData for POST
+  - example fetch commented out (replace /api/services with your endpoint)
+*/
+
+(function(){
+  const form = document.getElementById('serviceForm');
+  const imagesInput = document.getElementById('images');
+  const preview = document.getElementById('preview');
+  const errors = document.getElementById('formErrors');
+  const result = document.getElementById('result');
+  const saveDraftBtn = document.getElementById('saveDraft');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Preview selected images (client-side)
+  imagesInput.addEventListener('change', (e) => {
+    preview.innerHTML = '';
+    const files = Array.from(e.target.files).slice(0,6); // limit 6 preview
+    files.forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      const img = document.createElement('img');
+      img.alt = file.name;
+      preview.appendChild(img);
+      const reader = new FileReader();
+      reader.onload = (ev) => img.src = ev.target.result;
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // Simple validation helper
+  function validate(formData){
+    const errs = [];
+    if (!formData.get('title') || formData.get('title').trim().length < 3)
+      errs.push('Title is required (min 3 characters).');
+    if (!formData.get('description') || formData.get('description').trim().length < 10)
+      errs.push('Description is required (min 10 characters).');
+    if (!formData.get('price') || Number(formData.get('price')) < 0)
+      errs.push('A valid base price is required.');
+    if (!formData.get('location') || formData.get('location').trim().length < 2)
+      errs.push('Location is required.');
+    if (!formData.get('providerName') || formData.get('providerName').trim().length < 2)
+      errs.push('Provider name is required.');
+    if (!formData.get('providerEmail') || !/^\S+@\S+\.\S+$/.test(formData.get('providerEmail')))
+      errs.push('A valid contact email is required.');
+    return errs;
+  }
+
+  // Collect availability checkboxes
+  function collectAvailability(){
+    const nodes = Array.from(document.querySelectorAll('input[name="availability"]:checked'));
+    return nodes.map(n => n.value);
+  }
+
+  // Build FormData
+  function buildFormData(isDraft = false){
+    const fd = new FormData();
+    const el = form.elements;
+
+    fd.append('title', el.title.value.trim());
+    fd.append('category', el.category.value);
+    fd.append('description', el.description.value.trim());
+    fd.append('price', el.price.value);
+    fd.append('currency', el.currency.value);
+    fd.append('location', el.location.value.trim());
+    fd.append('serviceType', el.serviceType.value);
+    fd.append('providerName', el.providerName.value.trim());
+    fd.append('providerEmail', el.providerEmail.value.trim());
+    fd.append('minHours', el.minHours.value || '');
+    fd.append('maxPeople', el.maxPeople.value || '');
+    fd.append('responseTime', el.responseTime.value || '');
+    fd.append('availability', JSON.stringify(collectAvailability()));
+    fd.append('status', isDraft ? 'draft' : (el.status ? el.status.value : 'pending'));
+
+    // append images
+    const images = el.images.files;
+    for (let i=0;i<images.length && i<6;i++){
+      fd.append('images', images[i], images[i].name);
+    }
+    // verification docs
+    const docs = el.verificationDocs.files;
+    for (let i=0;i<docs.length;i++){
+      fd.append('verificationDocs', docs[i], docs[i].name);
+    }
+
+    return fd;
+  }
+
+  // Handle save draft
+  saveDraftBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    errors.textContent = '';
+    result.textContent = 'Saving draft...';
+
+    const fd = buildFormData(true);
+    // Example: save draft locally (fallback) and send to API if available
+    // We'll store basic fields in localStorage for convenience
+    try{
+      const obj = {
+        title: fd.get('title'),
+        category: fd.get('category'),
+        description: fd.get('description'),
+        price: fd.get('price'),
+        location: fd.get('location'),
+        providerName: fd.get('providerName'),
+        providerEmail: fd.get('providerEmail'),
+        savedAt: (new Date()).toISOString()
+      };
+      localStorage.setItem('cleanup_service_draft', JSON.stringify(obj));
+      result.textContent = 'Draft saved locally.';
+    }catch(err){
+      console.error(err);
+      result.textContent = 'Could not save draft locally.';
+    }
+  });
+
+  // Handle submit
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    errors.textContent = '';
+    result.textContent = '';
+    submitBtn.disabled = true;
+
+    const fd = buildFormData(false);
+    const validation = validate(fd);
+    if (validation.length){
+      errors.textContent = validation.join(' ');
+      submitBtn.disabled = false;
+      return;
+    }
+
+    result.textContent = 'Submitting...';
+
+    // Example fetch: uncomment and adapt to your backend endpoint and authentication
+    /* try {
+      const resp = await fetch('/api/services', {
+        method: 'POST',
+        body: fd,
+        // optionally include auth headers e.g. Authorization: Bearer <token>
+      });
+      if (!resp.ok) throw new Error('Network response was not ok');
+      const data = await resp.json();
+      result.textContent = 'Service submitted successfully. It will be reviewed by admin.';
+      form.reset();
+      preview.innerHTML = '';
+    } catch (err) {
+      console.error(err);
+      result.textContent = 'Submission failed. Please try again later.';
+    } finally {
+      submitBtn.disabled = false;
+    } */
+
+    // For demo without backend: show assembled data summary in console and simulate success
+    console.log('--- FormData preview (non-file fields) ---');
+    for (const [k,v] of fd.entries()){
+      if (k === 'images' || k === 'verificationDocs') continue;
+      console.log(k, v);
+    }
+    result.textContent = 'Demo: form prepared. (Network call is commented out — see code.)';
+    submitBtn.disabled = false;
+  });
+
+  // Optionally: load draft to form on page load
+  window.addEventListener('load', () => {
+    try{
+      const draft = JSON.parse(localStorage.getItem('cleanup_service_draft'));
+      if (draft){
+        // gentle prompt: load draft
+        if (confirm('A saved draft was found — do you want to load it into the form?')){
+          document.getElementById('title').value = draft.title || '';
+          document.getElementById('category').value = draft.category || '';
+          document.getElementById('description').value = draft.description || '';
+          document.getElementById('price').value = draft.price || '';
+          document.getElementById('location').value = draft.location || '';
+          document.getElementById('providerName').value = draft.providerName || '';
+          document.getElementById('providerEmail').value = draft.providerEmail || '';
+        }
+      }
+    }catch(e){ /* ignore */ }
+  });
+
+})();
+</script>
+</body>
+</html>

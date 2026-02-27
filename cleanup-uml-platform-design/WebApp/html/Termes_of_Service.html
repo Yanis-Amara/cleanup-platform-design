@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — CleanUp</title>
+  <meta name="description" content="Read the Terms of Service that apply when you use the CleanUp platform." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#10B981;
+      --primary-dark:#059669;
+      --primary-light:#ECFDF5;
+      --accent:#3B82F6;
+      --bg:#F8FAFC;
+      --card:#FFFFFF;
+      --text:#0F172A;
+      --muted:#64748B;
+      --border:#E2E8F0;
+      --hover:#F1F5F9;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+    /* Header */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:70px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:20px;
+      color:var(--text);
+    }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),#34D399);
+      box-shadow:0 2px 8px rgba(16,185,129,.3);
+    }
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+    }
+    .nav-link{
+      color:var(--muted);
+    }
+    .nav-link:hover{
+      color:var(--primary);
+    }
+
+    /* Page layout */
+    main{
+      padding:40px 0 60px;
+    }
+    .page-header{
+      margin-bottom:24px;
+    }
+    .kicker{
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:600;
+      color:var(--primary);
+      margin-bottom:4px;
+    }
+    h1{
+      font-size:30px;
+      margin:0 0 6px;
+    }
+    .meta{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      border:1px solid var(--border);
+      padding:22px 22px 24px;
+      box-shadow:0 10px 30px rgba(15,23,42,.06);
+    }
+
+    h2{
+      font-size:18px;
+      margin:22px 0 6px;
+    }
+    h3{
+      font-size:15px;
+      margin:14px 0 4px;
+    }
+    p{
+      margin:0 0 8px;
+      font-size:14px;
+      color:var(--text);
+    }
+    .muted{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    ul{
+      margin:0 0 8px 18px;
+      padding:0;
+      font-size:14px;
+      color:var(--text);
+    }
+    li{margin-bottom:4px}
+
+    .notice{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:var(--primary-light);
+      font-size:12px;
+      color:#065F46;
+    }
+
+    @media(max-width:640px){
+      h1{font-size:24px}
+      .card{padding:18px 16px 20px}
+    }
+  </style>
+</head>
+<body id="top">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../html/Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+        <div class="nav-actions">
+          <!-- Hello, Prénom Nom (rempli par auth-header.js) -->
+          <span id="nav-hello" class="nav-link" style="display:none; margin-right: 0.75rem;"></span>
+
+          <!-- Liens visibles seulement si NON connecté -->
+          <a href="../html/Sign_In.html" class="nav-link" id="nav-sign-in">Sign in</a>
+          <a href="../html/Create_Account.html" class="nav-link" id="nav-create-account">Create account</a>
+
+          <!-- Lien visible seulement si connecté -->
+          <a href="#" class="nav-link" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main>
+    <div class="container">
+      <header class="page-header">
+        <div class="kicker">Legal</div>
+        <h1>CleanUp Terms of Service</h1>
+        <p class="meta">
+          Last updated: 01 December 2025 — Demo terms for university project use only.
+        </p>
+      </header>
+
+      <section class="card">
+        <p class="muted">
+          These Terms explain the rules that apply when you create an account, make a booking or otherwise use the CleanUp website and services.
+        </p>
+
+        <h2>1. Who we are</h2>
+        <p>
+          CleanUp is a student project developed at Staffordshire University in Stoke-on-Trent. For now, it is a learning project and not a real commercial cleaning company.
+        </p>
+
+        <h2>2. Acceptance of these Terms</h2>
+        <p>
+          By creating an account, booking a cleaning, or ticking a box that refers to these Terms, you confirm that you have read, understood and agree to be bound by them.
+        </p>
+        <p>
+          If you do not agree with these Terms, you must not use the CleanUp website or services.
+        </p>
+
+        <h2>3. Description of the service</h2>
+        <p>
+          CleanUp is designed as an online platform that lets customers request cleaning services and lets cleaners offer those services, subject to availability.
+        </p>
+        <p>
+          Features may change, be added or be removed at any time as part of the project development.
+        </p>
+
+        <h2>4. Accounts and security</h2>
+        <p>
+          You are responsible for keeping your login details confidential and for all activity that happens under your account.
+        </p>
+        <p>
+          You agree to contact us promptly if you believe your account has been accessed without your permission so it can be disabled or reset.
+        </p>
+
+        <h2>5. Bookings, payments and cancellations</h2>
+        <p>
+          Any prices, time estimates and availability shown on the platform are indicative only and may change before a booking is confirmed.
+        </p>
+        <p>
+          If a cancellation or reschedule policy is shown during checkout, that specific policy will apply to the relevant booking.
+        </p>
+
+        <h2>6. Your responsibilities</h2>
+        <p>You agree to:</p>
+        <ul>
+          <li>Provide accurate, complete information when creating an account or placing a booking.</li>
+          <li>Use the platform only for lawful purposes and in a respectful way towards cleaners and other users.</li>
+          <li>Ensure that the property to be cleaned is safe and accessible at the agreed time.</li>
+        </ul>
+
+        <h2>7. Prohibited activities</h2>
+        <p>You must not:</p>
+        <ul>
+          <li>Attempt to damage, overload or interfere with the website or its security.</li>
+          <li>Use the platform to send spam, abuse, or any kind of illegal content.</li>
+          <li>Copy, resell or reverse‑engineer any part of the website code or design without permission.</li>
+        </ul>
+
+        <h2>8. Intellectual property</h2>
+        <p>
+          All logos, branding, text, designs and code on the CleanUp website are owned by the project team or used with permission and are protected by applicable intellectual property laws.
+        </p>
+        <p>
+          You may use the website only for personal, non‑commercial purposes and may not reuse content without prior written permission.
+        </p>
+
+        <h2>9. Disclaimer and limitation of liability</h2>
+        <p>
+          The CleanUp platform is provided on an “as is” and “as available” basis for educational and demonstration purposes, without any guarantees that it will always be available, secure or error‑free.
+        </p>
+        <p>
+          To the maximum extent permitted by law, the project team and university will not be liable for any loss or damage that results from your use of, or inability to use, the website.
+        </p>
+
+        <h2>10. Changes to these Terms</h2>
+        <p>
+          These Terms may be updated from time to time. The “Last updated” date at the top of this page will change when this happens.
+        </p>
+        <p>
+          If you continue to use the website after changes take effect, you agree to the updated version of the Terms.
+        </p>
+
+        <h2>11. Contact</h2>
+        <p>
+          For questions about these Terms in the context of the university project, please contact the CleanUp project team via the contact details shown on the Contact page.
+        </p>
+
+        <div class="notice">
+          This Terms of Service page is a simplified template created for a student project. For any real business use, a qualified legal professional should review and adapt it to local law.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

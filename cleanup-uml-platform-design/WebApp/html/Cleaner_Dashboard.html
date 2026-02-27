@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleaner Dashboard – CleanUp</title>
+  <meta name="description" content="Your cleaner dashboard. View today’s jobs, schedule, earnings and ratings.">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles globaux -->
+  <link rel="stylesheet" href="../css/home.css">
+  <!-- On réutilise le même CSS que pour les clients -->
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <!-- Header global -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+        <div class="nav-actions">
+          <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+          <!-- id ajouté pour auth-header.js si besoin -->
+          <a href="Cleaner_Dashboard.html" class="btn btn-ghost active" id="nav-dashboard">Dashboard</a>
+
+          <a href="Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+          <a href="Create_Account.html" class="btn btn-primary" id="nav-create-account">Create account</a>
+
+          <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Layout dashboard cleaner -->
+  <div class="dashboard-shell">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-inner">
+        <div class="dash-user-mini">
+          <div class="dash-avatar" id="dash-cleaner-avatar">CL</div>
+          <div>
+            <div class="dash-user-name" id="dash-cleaner-name">Cleaner Name</div>
+            <div class="dash-user-email" id="dash-cleaner-email">you@example.com</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="dash-nav-title">Cleaner</div>
+          <nav class="dash-nav">
+            <button class="dash-nav-link active" data-section="overview">
+              <span class="icon">🏠</span>
+              <span>Overview</span>
+            </button>
+            <button class="dash-nav-link" data-section="today">
+              <span class="icon">📅</span>
+              <span>Today’s jobs</span>
+            </button>
+            <button class="dash-nav-link" data-section="messages">
+              <span class="icon">💬</span>
+              <span>Messages</span>
+            </button>
+            <button class="dash-nav-link" data-section="earnings">
+              <span class="icon">💶</span>
+              <span>Earnings</span>
+            </button>
+            <button class="dash-nav-link" data-section="ratings">
+              <span class="icon">⭐</span>
+              <span>Ratings & reviews</span>
+            </button>
+            <button class="dash-nav-link" data-section="support">
+              <span class="icon">❓</span>
+              <span>Support</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <div class="dash-sidebar-footer">
+        <div>Joined CleanUp <span id="cleaner-member-since">2025</span></div>
+        <div>Level: <strong id="cleaner-level">Standard cleaner</strong></div>
+      </div>
+    </aside>
+
+    <!-- Contenu principal -->
+    <main class="dash-main">
+      <!-- En‑tête + stats -->
+      <header class="dash-main-header">
+        <div class="dash-title-block">
+          <h1>Welcome back, <span id="cleaner-first-name">Cleaner</span></h1>
+          <p>Track your jobs, hours, earnings and client feedback in one place.</p>
+        </div>
+        <div class="dash-quick-stats">
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Jobs today</div>
+            <div class="dash-stat-value" id="stat-jobs-today">0</div>
+            <div class="dash-stat-meta">Confirmed visits</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Hours this week</div>
+            <div class="dash-stat-value" id="stat-hours-week">0h</div>
+            <div class="dash-stat-meta">Planned schedule</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Average rating</div>
+            <div class="dash-stat-value" id="stat-cleaner-rating">–</div>
+            <div class="dash-stat-meta">From clients</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Overview : prochaine mission + main offer + profil pro -->
+      <section class="dash-grid-2" id="section-overview">
+        <!-- Prochaine mission -->
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Next job</div>
+              <div class="dash-card-subtitle">Your upcoming visit</div>
+            </div>
+            <span class="dash-badge-soft" id="cleaner-next-status">No job</span>
+          </div>
+          <div id="cleaner-next-job">
+            <p class="dash-empty">
+              You have no job assigned yet. Once a client books you, the next visit will appear here.
+            </p>
+            <div class="dash-tag-row">
+              <span class="dash-tag">Home cleaning</span>
+              <span class="dash-tag">Flexible route</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- My main offer -->
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">My main offer</div>
+              <div class="dash-card-subtitle">What customers see on your profile</div>
+            </div>
+            <!-- Badge qui affichera le tarif horaire -->
+            <span class="dash-badge-soft" id="dash-offer-price">—</span>
+          </div>
+          <!-- Résumé / description courte -->
+          <p id="dash-offer-summary" class="dash-small-text">
+            You haven’t created your main offer yet. Fill in your service details so clients know what you offer.
+          </p>
+          <ul class="dash-list">
+            <li>
+              <span class="dash-list-label">Title</span>
+              <span class="dash-list-value" id="dash-offer-title">Not set</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Service area</span>
+              <span class="dash-list-value" id="dash-offer-area">Not set</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Minimum duration</span>
+              <span class="dash-list-value" id="dash-offer-min-hours">Not set</span>
+            </li>
+          </ul>
+          <button type="button" class="dash-link-btn" id="btn-edit-offer">
+            Edit my offer →
+          </button>
+        </article>
+
+        <!-- Profil pro -->
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Professional profile</div>
+              <div class="dash-card-subtitle">Public information for clients</div>
+            </div>
+          </div>
+          <ul class="dash-list">
+            <li>
+              <span class="dash-list-label">Name</span>
+              <span class="dash-list-value" id="cleaner-profile-name">(not set yet)</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Main city</span>
+              <span class="dash-list-value" id="cleaner-city">(not set yet)</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Experience</span>
+              <span class="dash-list-value" id="cleaner-experience">0 years</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Services</span>
+              <span class="dash-list-value" id="cleaner-services">Regular, deep clean</span>
+            </li>
+          </ul>
+          <!-- Lien transformé en bouton qui ouvre le modal -->
+          <a href="#" class="dash-link-btn" id="btn-edit-profile">
+            <span>Edit professional profile</span> →
+          </a>
+        </article>
+      </section>
+
+      <!-- New requests from clients -->
+      <section class="dash-row" id="section-open-requests">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">New requests</div>
+              <div class="dash-card-subtitle">Clients waiting for a cleaner</div>
+            </div>
+          </div>
+          <div id="cleaner-open-jobs">
+            <p class="dash-empty">
+              You have no new requests at the moment. When a client books a job, it will appear here with buttons to accept or decline.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Messages -->
+      <section class="dash-row" id="section-messages">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Messages</div>
+              <div class="dash-card-subtitle">Chat with your clients</div>
+            </div>
+          </div>
+
+          <div class="dash-grid-2" style="align-items:flex-start; margin-top:8px;">
+            <!-- Liste des conversations -->
+            <div>
+              <h3 class="dash-small-title">Conversations</h3>
+              <div id="conversations-list">
+                <p class="dash-empty">
+                  You have no conversations yet. Once a client books you, your chat with them will appear here.
+                </p>
+              </div>
+            </div>
+
+            <!-- Panneau de messages -->
+            <div>
+              <h3 class="dash-small-title" id="conversation-header">
+                Select a conversation
+              </h3>
+              <div id="conversation-messages" class="dash-messages-panel">
+                <p class="dash-small-text">
+                  Choose a conversation on the left to read and send messages.
+                </p>
+              </div>
+              <form id="message-form" class="dash-message-form" style="margin-top:8px; display:none;">
+                <textarea
+                  id="message-input"
+                  class="input"
+                  rows="2"
+                  placeholder="Type your message..."
+                  style="resize:vertical;"
+                ></textarea>
+                <button type="submit" class="btn btn-primary" style="margin-top:6px;">
+                  Send
+                </button>
+                <div id="message-status" class="dash-small-text" style="margin-top:4px;"></div>
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Today’s jobs -->
+      <section class="dash-row" id="section-today">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Jobs</div>
+              <div class="dash-card-subtitle">Route and schedule</div>
+            </div>
+          </div>
+          <div id="cleaner-today-jobs">
+            <p class="dash-empty">
+              No jobs scheduled for today. New bookings assigned to you will appear here with time and address.
+            </p>
+          </div>
+        </article>
+      </section>
+
+    
+      <!-- Earnings -->
+      <section class="dash-row" id="section-earnings">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Earnings</div>
+              <div class="dash-card-subtitle">Payouts and history</div>
+            </div>
+          </div>
+          <ul class="dash-list">
+            <li>
+              <span class="dash-list-label">Total</span>
+              <span class="dash-list-value" id="earnings-total">€0</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Ratings & reviews -->
+      <section class="dash-row" id="section-ratings">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Ratings & reviews</div>
+              <div class="dash-card-subtitle">What clients say about you</div>
+            </div>
+          </div>
+          <div id="cleaner-ratings-list">
+            <p class="dash-empty">
+              You don’t have any reviews yet. After each job, clients can rate you and leave feedback here.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Support -->
+      <section class="dash-row" id="section-support">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Support</div>
+              <div class="dash-card-subtitle">We’re here if you need us</div>
+            </div>
+          </div>
+          <p class="dash-small-text">
+            Questions about a job, payment or client? Contact the CleanUp team.
+          </p>
+          <div class="dash-tag-row">
+            <span class="dash-tag">Cleaner help center</span>
+            <span class="dash-tag">Job issues</span>
+            <span class="dash-tag">Payout support</span>
+          </div>
+          <a href="Contact.html" class="dash-link-btn">
+            <span>Contact support</span> →
+          </a>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL PROFIL PRO CLEANER -->
+  <div id="profile-modal-backdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Edit professional profile</h2>
+        <button type="button" class="modal-close" id="profile-close-btn">×</button>
+      </div>
+      <form id="profile-form" class="modal-body">
+        <div class="field">
+          <label class="label" for="profile-name-input">Name</label>
+          <input type="text" id="profile-name-input" class="input" />
+        </div>
+        <div class="field">
+          <label class="label" for="profile-city-input">Main city</label>
+          <input type="text" id="profile-city-input" class="input" placeholder="e.g. Stoke-on-Trent" />
+        </div>
+        <div class="field">
+          <label class="label" for="profile-experience-input">Experience (years)</label>
+          <input type="number" min="0" id="profile-experience-input" class="input" />
+        </div>
+        <div class="field">
+          <label class="label" for="profile-services-input">Services</label>
+          <input
+            type="text"
+            id="profile-services-input"
+            class="input"
+            placeholder="Regular, deep clean, windows..."
+          />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="profile-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL MAIN OFFER CLEANER -->
+  <div id="offer-modal-backdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Edit main offer</h2>
+        <button type="button" class="modal-close" id="offer-close-btn">×</button>
+      </div>
+      <form id="offer-form" class="modal-body">
+        <div class="field">
+          <label class="label" for="offer-title-input">Service title</label>
+          <input
+            type="text"
+            id="offer-title-input"
+            class="input"
+            placeholder="e.g. Deep flat clean 2–3 rooms"
+          />
+        </div>
+        <div class="field">
+          <label class="label" for="offer-description-input">Short description</label>
+          <textarea
+            id="offer-description-input"
+            class="input"
+            rows="3"
+            placeholder="Describe what you clean, products you use, and what makes you reliable."
+          ></textarea>
+        </div>
+        <div class="field">
+          <label class="label" for="offer-price-input">Hourly rate (€)</label>
+          <input type="number" id="offer-price-input" class="input" min="0" step="1" />
+        </div>
+        <div class="field">
+          <label class="label" for="offer-min-input">Minimum duration (h)</label>
+          <input type="number" id="offer-min-input" class="input" min="1" step="1" />
+        </div>
+        <div class="field">
+          <label class="label" for="offer-area-input">Service area</label>
+          <input
+            type="text"
+            id="offer-area-input"
+            class="input"
+            placeholder="e.g. Stoke-on-Trent center, Hanley, Shelton..."
+          />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="offer-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save offer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS spécifique au dashboard cleaner -->
+  <script src="../js/cleaner_dashboard.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

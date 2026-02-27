@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard — CleanUp</title>
+
+  <link rel="stylesheet" href="../css/dashboard.css" />
+
+  <style>
+    /* Top admin bar */
+    .admin-topbar {
+      height: 60px;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      box-shadow: 0 2px 6px rgba(15,23,42,0.5);
+    }
+    .admin-topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .admin-logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 0% 0%, #a7f3d0, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: #022c22;
+    }
+    .admin-topbar-title {
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-topbar-title strong {
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+    .admin-topbar-title span {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .admin-topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+    }
+    .admin-chip-env {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15,118,110,0.18);
+      color: #a5f3fc;
+      border: 1px solid rgba(45,212,191,0.25);
+    }
+    .admin-user-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .admin-user-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: #111827;
+      border: 1px solid #4b5563;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .admin-user-meta {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+    }
+    .admin-user-meta span:first-child {
+      font-weight: 500;
+    }
+    .admin-user-meta span:last-child {
+      color: #9ca3af;
+    }
+
+    .dashboard-shell {
+      grid-template-columns: 250px minmax(0, 2.2fr) minmax(0, 1.3fr);
+      min-height: calc(100vh - 60px);
+    }
+
+    /* Sidebar */
+    .dash-sidebar-inner {
+      border-radius: 18px;
+    }
+
+    /* Content header */
+    .dash-main-header {
+      grid-column: 1 / -1;
+      margin-bottom: 10px;
+    }
+
+    /* Stats cards */
+    .admin-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .admin-stat-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .admin-stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+    .admin-stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .admin-stat-meta {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    /* Tables */
+    .admin-table-wrap {
+      max-height: 480px;
+      overflow: auto;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: #ffffff;
+    }
+    .admin-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .admin-table th,
+    .admin-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #f3f4f6;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .admin-table th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      background: #f9fafb;
+    }
+    .admin-table tbody tr:nth-child(even) {
+      background: #f9fafb;
+    }
+    .admin-row-clickable {
+      cursor: pointer;
+    }
+    .admin-row-selected {
+      background: #eff6ff !important;
+    }
+
+    .admin-pill-active {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: #ecfdf5;
+      color: #065f46;
+    }
+    .admin-pill-inactive {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .dash-badge-role {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+    .dash-badge-role--cleaner {
+      background: #ecfdf5;
+      color: #047857;
+    }
+    .dash-badge-role--admin {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .admin-action-btn {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .admin-action-btn--danger {
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+
+    .admin-pill-filter {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      color: #111827;
+      cursor: pointer;
+    }
+    .admin-pill-filter--active {
+      background: #ecfdf5;
+      color: #047857;
+      border-color: rgba(16,185,129,0.6);
+    }
+
+    .admin-search-input {
+      flex: 1;
+      min-width: 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-size: 12px;
+    }
+
+    .admin-tag {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .admin-empty {
+      font-size: 13px;
+      color: #6b7280;
+      padding: 8px 10px;
+    }
+
+    /* Detail panel à droite */
+    .admin-detail-card {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      padding: 18px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .admin-detail-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admin-detail-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0% 0%, #e0f2fe, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #022c22;
+    }
+    .admin-detail-name {
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .admin-detail-email {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .admin-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px 12px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+    .admin-detail-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 2px;
+    }
+    .admin-detail-value {
+      font-size: 13px;
+      color: #111827;
+    }
+    .admin-detail-footer {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    /* Espacement vertical des cartes au centre */
+    .dash-main .dash-card {
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top admin bar -->
+  <header class="admin-topbar">
+    <div class="admin-topbar-left">
+      <div class="admin-logo-mark">C</div>
+      <div class="admin-topbar-title">
+        <strong>CleanUp Admin</strong>
+        <span>Member & cleaner management</span>
+      </div>
+    </div>
+    <div class="admin-topbar-right">
+      <span class="admin-chip-env">Project · Localhost</span>
+      <div class="admin-user-pill">
+        <div class="admin-user-avatar" id="admin-avatar">A</div>
+        <div class="admin-user-meta">
+          <span id="admin-name">Admin</span>
+          <span id="admin-email">admin@cleanup.com</span>
+        </div>
+      </div>
+      <button id="nav-logout" class="admin-action-btn admin-action-btn--danger">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-inner">
+        <div>
+          <div class="dash-nav-title">Overview</div>
+          <div class="dash-nav">
+            <button class="dash-nav-link active" type="button" data-section="members">
+              <span class="icon">👥</span>
+              <span>Members</span>
+            </button>
+            <button class="dash-nav-link" type="button" data-section="cleaners">
+              <span class="icon">🧹</span>
+              <span>Cleaners & offers</span>
+            </button>
+            <!-- Nouveau bouton Jobs overview -->
+            <button class="dash-nav-link" type="button" data-section="jobs">
+              <span class="icon">📋</span>
+              <span>Jobs overview</span>
+            </button>
+          </div>
+        </div>
+        <div class="dash-sidebar-footer">
+          Use this panel to quickly see who is on the platform and what they offer.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Colonne principale : tables (une sous l'autre) -->
+    <section class="dash-main">
+      <div class="dash-main-header">
+        <div class="dash-title-block">
+          <h1>Platform members</h1>
+          <p>Filter by role, inspect accounts, and enable or disable access.</p>
+        </div>
+      </div>
+
+      <!-- Stats globales admin -->
+      <div class="admin-stats-row">
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Users</div>
+          <div class="admin-stat-value" id="stat-users-total">—</div>
+          <div class="admin-stat-meta" id="stat-users-breakdown">
+            Loading…
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Jobs activity</div>
+          <div class="admin-stat-value" id="stat-jobs-main">—</div>
+          <div class="admin-stat-meta" id="stat-jobs-meta">
+            Loading…
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Quality & cities</div>
+          <div class="admin-stat-value" id="stat-quality-rating">—</div>
+          <div class="admin-stat-meta" id="stat-quality-cities">
+            Loading…
+          </div>
+        </div>
+      </div>
+
+      <!-- Members -->
+      <article class="dash-card" id="section-members">
+        <div class="dash-card-header">
+          <div>
+            <div class="dash-card-title">Members directory</div>
+            <div class="dash-card-subtitle">
+              All registered accounts with role, rating, activity and status.
+            </div>
+          </div>
+          <div class="admin-filter-row" style="gap:8px; align-items:center;">
+            <input
+              id="member-search"
+              type="text"
+              placeholder="Search by name or email…"
+              class="admin-search-input"
+            />
+            <button id="filter-role-all"
+                    class="admin-pill-filter admin-pill-filter--active">
+              All
+            </button>
+            <button id="filter-role-customers"
+                    class="admin-pill-filter">
+              Customers
+            </button>
+            <button id="filter-role-cleaners"
+                    class="admin-pill-filter">
+              Cleaners
+            </button>
+          </div>
+        </div>
+
+        <div class="dash-card-body">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Created</th>
+                  <th>Rating</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                  <th>Debug</th>
+                </tr>
+              </thead>
+              <tbody id="admin-members-body">
+                <tr>
+                  <td colspan="8" class="admin-empty">Loading members...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cleaners & offers -->
+      <article class="dash-card" id="section-cleaners">
+        <div class="dash-card-header">
+          <div>
+            <div class="dash-card-title">Cleaners and main offers</div>
+            <div class="dash-card-subtitle">
+              City, rating and hourly rate for every cleaner profile.
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card-body">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Cleaner</th>
+                  <th>City</th>
+                  <th>Rating</th>
+                  <th>Offer title</th>
+                  <th>Rate</th>
+                  <th>Min hours</th>
+                  <th>Area</th>
+                  <th>Jobs done</th>
+                  <th>Reviews</th>
+                </tr>
+              </thead>
+              <tbody id="admin-cleaners-body">
+                <tr>
+                  <td colspan="9" class="admin-empty">Loading cleaners...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Jobs overview -->
+      <article class="dash-card" id="section-jobs">
+        <div class="dash-card-header">
+          <div>
+            <div class="dash-card-title">Jobs overview</div>
+            <div class="dash-card-subtitle">
+              Latest jobs with client, assigned cleaner, status and rating.
+            </div>
+          </div>
+          <div class="admin-filter-row">
+            <button id="filter-jobs-all"
+                    class="admin-pill-filter admin-pill-filter--active">
+              All
+            </button>
+            <button id="filter-jobs-open"
+                    class="admin-pill-filter">
+              Open
+            </button>
+            <button id="filter-jobs-assigned"
+                    class="admin-pill-filter">
+              Assigned
+            </button>
+            <button id="filter-jobs-done"
+                    class="admin-pill-filter">
+              Done
+            </button>
+          </div>
+        </div>
+
+        <div class="dash-card-body">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Client</th>
+                  <th>Cleaner</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody id="admin-jobs-body">
+                <tr>
+                  <td colspan="6" class="admin-empty">Loading jobs...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Colonne droite : détail du membre sélectionné -->
+    <aside class="dash-sidebar">
+      <div class="admin-detail-card" id="member-detail-card">
+        <div class="admin-detail-header">
+          <div class="admin-detail-avatar" id="detail-avatar">U</div>
+          <div>
+            <div class="admin-detail-name" id="detail-name">Select a member</div>
+            <div class="admin-detail-email" id="detail-email">
+              Click on a row to inspect details.
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-detail-grid" id="detail-grid" style="display:none;">
+          <div>
+            <div class="admin-detail-label">Role</div>
+            <div class="admin-detail-value" id="detail-role"></div>
+          </div>
+          <div>
+            <div class="admin-detail-label">Member ID</div>
+            <div class="admin-detail-value" id="detail-id"></div>
+          </div>
+          <div>
+            <div class="admin-detail-label">Created</div>
+            <div class="admin-detail-value" id="detail-created"></div>
+          </div>
+          <div>
+            <div class="admin-detail-label">Status</div>
+            <div class="admin-detail-value" id="detail-status"></div>
+          </div>
+          <div>
+            <div class="admin-detail-label">Average rating</div>
+            <div class="admin-detail-value" id="detail-rating"></div>
+          </div>
+          <div>
+            <div class="admin-detail-label">Rating count</div>
+            <div class="admin-detail-value" id="detail-rating-count"></div>
+          </div>
+        </div>
+
+        <div class="admin-detail-footer" id="detail-footer">
+          Select a member in the table to see their account summary.
+        </div>
+
+        <div style="margin-top:10px; display:flex; gap:8px;">
+          <button id="detail-open-cleaner"
+                  class="admin-action-btn"
+                  style="display:none;">
+            Open cleaner profile
+          </button>
+          <button id="detail-toggle-active"
+                  class="admin-action-btn admin-action-btn--danger"
+                  style="display:none;">
+            Deactivate
+          </button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Script principal admin (chargement données, filtres, etc.) -->
+  <script src="../js/admin_dashboard.js"></script>
+
+  <!-- Sécurise le bouton Logout même si le JS principal plante -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const logoutBtn = document.getElementById("nav-logout");
+      if (!logoutBtn) return;
+
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        window.location.href = "Sign_In.html";
+      });
+    });
+  </script>
+</body>
+</html>

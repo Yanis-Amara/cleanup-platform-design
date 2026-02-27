@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — CleanUp</title>
+  <meta name="description" content="Learn how the CleanUp project collects, uses and protects your personal information." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#10B981;
+      --primary-dark:#059669;
+      --primary-light:#ECFDF5;
+      --accent:#3B82F6;
+      --bg:#F8FAFC;
+      --card:#FFFFFF;
+      --text:#0F172A;
+      --muted:#64748B;
+      --border:#E2E8F0;
+      --hover:#F1F5F9;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+    /* Header */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:70px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:20px;
+      color:var(--text);
+    }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),#34D399);
+      box-shadow:0 2px 8px rgba(16,185,129,.3);
+    }
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+    }
+    .nav-link{
+      color:var(--muted);
+    }
+    .nav-link:hover{
+      color:var(--primary);
+    }
+
+    /* Page layout */
+    main{
+      padding:40px 0 60px;
+    }
+    .page-header{
+      margin-bottom:24px;
+    }
+    .kicker{
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:600;
+      color:var(--primary);
+      margin-bottom:4px;
+    }
+    h1{
+      font-size:30px;
+      margin:0 0 6px;
+    }
+    .meta{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      border:1px solid var(--border);
+      padding:22px 22px 24px;
+      box-shadow:0 10px 30px rgba(15,23,42,.06);
+    }
+
+    h2{
+      font-size:18px;
+      margin:22px 0 6px;
+    }
+    h3{
+      font-size:15px;
+      margin:14px 0 4px;
+    }
+    p{
+      margin:0 0 8px;
+      font-size:14px;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    ul{
+      margin:0 0 8px 18px;
+      padding:0;
+      font-size:14px;
+      color:var(--text);
+    }
+    li{margin-bottom:4px}
+
+    .notice{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:var(--primary-light);
+      font-size:12px;
+      color:#065F46;
+    }
+
+    @media(max-width:640px){
+      h1{font-size:24px}
+      .card{padding:18px 16px 20px}
+    }
+  </style>
+</head>
+<body id="top">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../html/Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+        <div class="nav-actions">
+          <!-- Message Hello, Prénom Nom (rempli par auth-header.js) -->
+          <span id="nav-hello" class="nav-link" style="display:none; margin-right: 0.75rem;"></span>
+
+          <!-- Liens visibles seulement si NON connecté -->
+          <a href="../html/Sign_In.html" class="nav-link" id="nav-sign-in">Sign in</a>
+          <a href="../html/Create_Account.html" class="nav-link" id="nav-create-account">Create account</a>
+
+          <!-- Lien visible seulement si connecté -->
+          <a href="#" class="nav-link" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main>
+    <div class="container">
+      <header class="page-header">
+        <div class="kicker">Legal</div>
+        <h1>CleanUp Privacy Policy</h1>
+        <p class="meta">
+          Last updated: 01 December 2025 — Demo policy for university project use only.
+        </p>
+      </header>
+
+      <section class="card">
+        <p class="muted">
+          This Privacy Policy explains how the CleanUp project collects, uses and protects personal information when you visit the website or interact with its features.
+        </p>
+
+        <h2>1. Who we are</h2>
+        <p>
+          CleanUp is a student web application developed by a group of six students at Staffordshire University in Stoke-on-Trent. It is currently a learning project and not an operating cleaning business.
+        </p>
+
+        <h2>2. What information we collect</h2>
+        <p>Depending on how you use the site, we may collect:</p>
+        <ul>
+          <li>Contact details, such as your name and email address, when you create an account or fill in a form.</li>
+          <li>Account information, such as your login identifier and basic profile details.</li>
+          <li>Booking information that you choose to enter about cleaning requests.</li>
+          <li>Technical data, such as IP address, browser type and pages visited, collected through basic logs or analytics.</li>
+        </ul>
+
+        <h2>3. How we use your information</h2>
+        <p>We use your information to:</p>
+        <ul>
+          <li>Create and manage your CleanUp account and sign-in sessions.</li>
+          <li>Allow you to make, view or cancel example bookings within the project.</li>
+          <li>Monitor traffic and improve the design and performance of the site.</li>
+          <li>Respond to messages you send through the Contact page.</li>
+        </ul>
+
+        <h2>4. Legal basis (for UK / GDPR-style projects)</h2>
+        <p>
+          For a real deployment, personal data would typically be processed on the basis of consent (for example, when you tick a box or submit a form) or legitimate interests (such as running and securing the website).[web:149][web:158]
+        </p>
+        <p>
+          Because CleanUp is a university project and not a commercial service, data is used only for teaching, assessment and demonstration purposes.
+        </p>
+
+        <h2>5. Cookies and tracking</h2>
+        <p>
+          The project may use essential cookies or similar technologies that are needed for the site to work (for example, to keep you signed in).
+        </p>
+        <p>
+          If optional analytics cookies are added in the future, the site should clearly explain them and, where required by law, ask for your consent before they are placed.[web:151][web:155]
+        </p>
+
+        <h2>6. How long we keep your data</h2>
+        <p>
+          Personal data entered into the project environment is kept only for as long as needed for course work, testing and marking, and may be deleted at the end of the academic year or project.[web:149]
+        </p>
+
+        <h2>7. Sharing your information</h2>
+        <p>
+          The CleanUp project team does not sell personal data. Information may be shared within the university (for example with teaching staff) for the purposes of supervision, assessment and technical support.
+        </p>
+
+        <h2>8. Data security</h2>
+        <p>
+          Reasonable technical and organisational measures are used to help protect personal data from unauthorised access, loss or misuse, such as password protection and restricted access to project files.[web:149][web:154]
+        </p>
+        <p>
+          However, no website can guarantee absolute security, especially in a test or development environment.
+        </p>
+
+        <h2>9. Your rights</h2>
+        <p>
+          Under UK data protection principles, individuals generally have rights such as accessing their data, asking for corrections, or requesting deletion, subject to certain conditions.[web:149][web:152]
+        </p>
+        <p>
+          In the context of this university project, you can contact the CleanUp project team using the details on the Contact page if you have questions about information held about you.
+        </p>
+
+        <h2>10. Children</h2>
+        <p>
+          The CleanUp project is aimed at adults and university students and is not designed for children. As far as the team is aware, data about children is not intentionally collected.
+        </p>
+
+        <h2>11. Changes to this Privacy Policy</h2>
+        <p>
+          This Privacy Policy may be updated from time to time, for example if new features are added to the project. The “Last updated” date at the top of this page will change when this happens.[web:151]
+        </p>
+
+        <h2>12. Contact</h2>
+        <p>
+          If you have any questions about this Privacy Policy in the context of the CleanUp university project, please contact the project team using the details provided on the Contact page.
+        </p>
+
+        <div class="notice">
+          This Privacy Policy is a simplified template created for an educational project. Any real-world deployment should use a detailed, legally‑reviewed privacy policy that accurately describes the data actually collected and processed.[web:149][web:157]
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

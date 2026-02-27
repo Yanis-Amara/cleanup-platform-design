@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – CleanUp</title>
+  <meta name="description" content="Your personal CleanUp dashboard. View bookings, preferences and account details.">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles globaux -->
+  <link rel="stylesheet" href="../css/home.css">
+  <!-- Styles spécifiques dashboard -->
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <!-- Header global (nav + auth-header.js) -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="Home.html" class="brand">
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </a>
+        <div class="nav-actions">
+          <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+          <a href="../html/Services.html" class="btn btn-ghost hide-sm" id="nav-services">Services</a>
+          <a href="Dashboard.html" class="btn btn-ghost active">Dashboard</a>
+
+          <a href="Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+          <a href="Create_Account.html" class="btn btn-primary" id="nav-create-account">Create account</a>
+
+          <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Layout dashboard -->
+  <div class="dashboard-shell">
+    <!-- Sidebar gauche -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-inner">
+        <div class="dash-user-mini">
+          <div class="dash-avatar" id="dash-avatar-initials">CL</div>
+          <div>
+            <div class="dash-user-name" id="dash-user-name">Client Name</div>
+            <div class="dash-user-email" id="dash-user-email">you@example.com</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="dash-nav-title">Account</div>
+          <nav class="dash-nav">
+            <button class="dash-nav-link active" data-section="overview">
+              <span class="icon">🏠</span>
+              <span>Overview</span>
+            </button>
+            <button class="dash-nav-link" data-section="bookings">
+              <span class="icon">📅</span>
+              <span>My bookings</span>
+            </button>
+            <button class="dash-nav-link" data-section="messages">
+              <span class="icon">💬</span>
+              <span>Messages</span>
+            </button>
+            <button class="dash-nav-link" data-section="addresses">
+              <span class="icon">📍</span>
+              <span>Addresses</span>
+            </button>
+            <button class="dash-nav-link" data-section="payments">
+              <span class="icon">💳</span>
+              <span>Payment methods</span>
+            </button>
+            <button class="dash-nav-link" data-section="preferences">
+              <span class="icon">⚙️</span>
+              <span>Cleaning preferences</span>
+            </button>
+            <button class="dash-nav-link" data-section="support">
+              <span class="icon">💬</span>
+              <span>Support & help</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <div class="dash-sidebar-footer">
+        <div>Member since <span id="dash-member-since">2025</span></div>
+        <div>Customer type: <strong id="dash-customer-tier">Standard</strong></div>
+      </div>
+    </aside>
+
+    <!-- Contenu principal -->
+    <main class="dash-main">
+      <!-- En‑tête + stats -->
+      <header class="dash-main-header">
+        <div class="dash-title-block">
+          <h1>Welcome back, <span id="dash-first-name">Client</span></h1>
+          <p>Here is a quick overview of your upcoming cleanings, saved details and preferences.</p>
+        </div>
+        <div class="dash-quick-stats">
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Next cleaning</div>
+            <div class="dash-stat-value" id="stat-next-cleaning">No booking yet</div>
+            <div class="dash-stat-meta" id="stat-next-cleaning-meta">Choose a date to get started</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Total cleanings</div>
+            <div class="dash-stat-value" id="stat-total-cleanings">0</div>
+            <div class="dash-stat-meta">All past visits</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Average rating</div>
+            <div class="dash-stat-value" id="stat-average-rating">–</div>
+            <div class="dash-stat-meta">Your reviews of cleaners</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Ligne 1 : prochaines réservations / profil (2 colonnes) -->
+      <section class="dash-grid-2" id="section-overview">
+        <!-- Prochaine réservation -->
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Next cleaning</div>
+              <div class="dash-card-subtitle">Your upcoming visit</div>
+            </div>
+            <span class="dash-badge-soft" id="dash-next-status">No booking</span>
+          </div>
+          <div id="dash-next-cleaning-details">
+            <p class="dash-empty">
+              You don’t have a booking yet. Book your first cleaning and it will appear here automatically.
+            </p>
+            <div class="dash-tag-row">
+              <span class="dash-tag">Regular cleaning</span>
+              <span class="dash-tag">Flexible reschedule</span>
+            </div>
+            <a href="Services.html" class="dash-link-btn">
+              <span>Book a cleaning</span> →
+            </a>
+          </div>
+        </article>
+
+        <!-- Infos de compte -->
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Account details</div>
+              <div class="dash-card-subtitle">Personal information</div>
+            </div>
+            <span class="dash-badge-soft">Customer</span>
+          </div>
+          <ul class="dash-list">
+            <li>
+              <span class="dash-list-label">Name</span>
+              <span class="dash-list-value" id="user-name">(not set yet)</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Email</span>
+              <span class="dash-list-value" id="user-email">(not set yet)</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Phone</span>
+              <span class="dash-list-value" id="user-phone">(optional)</span>
+            </li>
+            <li>
+              <span class="dash-list-label">Default address</span>
+              <span class="dash-list-value" id="user-address">(not set yet)</span>
+            </li>
+          </ul>
+          <!-- Bouton qui ouvre le modal de profil -->
+          <button type="button" id="btn-edit-profile" class="dash-link-btn">
+            <span>Edit profile and contact details</span> →
+          </button>
+        </article>
+      </section>
+
+    
+
+      <!-- Ligne 2 : My bookings -->
+      <section class="dash-row" id="section-bookings">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">My bookings</div>
+              <div class="dash-card-subtitle">Recent and upcoming</div>
+            </div>
+          </div>
+          <div id="dash-bookings-list" class="dash-bookings-list">
+            <p class="dash-empty">
+              You have no past or future bookings yet. Once you book a cleaner, your visits will appear here with date, time and cleaner name.
+            </p>
+          </div>
+          <!-- Nouveau bouton pour réduire/voir plus de réservations -->
+          <button type="button" id="btn-more-bookings" class="dash-link-btn" style="display:none;">
+            <span>Show more bookings</span> →
+          </button>
+          <a href="Services.html" class="dash-link-btn">
+            <span>View all services</span> →
+          </a>
+        </article>
+      </section>
+
+     
+      <!-- Nouvelle ligne : Messages (conversations + chat) -->
+      <section class="dash-row" id="section-messages">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Messages</div>
+              <div class="dash-card-subtitle">Chat with your cleaners</div>
+            </div>
+          </div>
+
+          <div class="dash-grid-2" style="align-items:flex-start; margin-top:8px;">
+            <!-- Liste des conversations -->
+            <div>
+              <h3 class="dash-small-title">Conversations</h3>
+              <div id="conversations-list">
+                <p class="dash-empty">
+                  You have no conversations yet. Once you accept a cleaner’s slot or a job is assigned, your chat with them will appear here.
+                </p>
+              </div>
+            </div>
+
+            <!-- Panneau de messages -->
+            <div>
+              <h3 class="dash-small-title" id="conversation-header">
+                Select a conversation
+              </h3>
+              <div id="conversation-messages" class="dash-messages-panel">
+                <p class="dash-small-text">
+                  Choose a conversation on the left to read and send messages.
+                </p>
+              </div>
+              <form id="message-form" class="dash-message-form" style="margin-top:8px; display:none;">
+                <textarea
+                  id="message-input"
+                  class="input"
+                  rows="2"
+                  placeholder="Type your message..."
+                  style="resize:vertical;"
+                ></textarea>
+                <button type="submit" class="btn btn-primary" style="margin-top:6px;">
+                  Send
+                </button>
+                <div id="message-status" class="dash-small-text" style="margin-top:4px;"></div>
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Ligne Addresses -->
+      <section class="dash-row" id="section-addresses">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Addresses</div>
+              <div class="dash-card-subtitle">Where we clean</div>
+            </div>
+            <button type="button" id="btn-edit-addresses" class="dash-link-btn">
+              Add or edit addresses →
+            </button>
+          </div>
+          <p id="addresses-summary" class="dash-section-text">
+            No saved addresses yet. Add your home address so booking is faster next time.
+          </p>
+        </article>
+      </section>
+
+      <!-- Ligne Payment methods -->
+      <section class="dash-row" id="section-payments">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Payment methods</div>
+              <div class="dash-card-subtitle">Saved cards</div>
+            </div>
+            <button type="button" id="btn-edit-payments" class="dash-link-btn">
+              Book and add a card →
+            </button>
+          </div>
+          <p id="payments-summary" class="dash-section-text">
+            You haven’t saved a payment method yet. You can securely add one at checkout.
+          </p>
+        </article>
+      </section>
+
+      <!-- Ligne Cleaning preferences -->
+      <section class="dash-row" id="section-preferences">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Cleaning preferences</div>
+              <div class="dash-card-subtitle">Tell us how you like things</div>
+            </div>
+            <button type="button" id="btn-edit-preferences" class="dash-link-btn">
+              Update cleaning preferences →
+            </button>
+          </div>
+          <ul class="dash-preferences-list">
+            <li>Products: <span id="pref-products">No preference</span></li>
+            <li>Pets at home: <span id="pref-pets">Not specified</span></li>
+            <li>Language: <span id="pref-language">English</span></li>
+            <li>Access notes: <span id="pref-access">Add door code or special instructions</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Ligne Support & help -->
+      <section class="dash-row" id="section-support">
+        <article class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <div class="dash-card-title">Support & help</div>
+              <div class="dash-card-subtitle">We’re here if you need us</div>
+            </div>
+          </div>
+          <p class="dash-small-text">
+            Need to change a booking, report an issue or ask a question about your account?
+          </p>
+          <div class="dash-tag-row">
+            <span class="dash-tag">Contact form</span>
+            <span class="dash-tag">FAQ</span>
+            <span class="dash-tag">Live updates</span>
+          </div>
+          <a href="Contact.html" class="dash-link-btn">
+            <span>Go to Help Center</span> →
+          </a>
+        </article>
+      </section>
+
+      <p class="dash-small-text dash-small-text--footer">
+        Tip: the more details you complete in your profile, the faster it is to book your next cleaning.
+      </p>
+    </main>
+  </div>
+
+  <!-- Modal : Addresses -->
+  <div id="modal-addresses" class="dash-modal hidden">
+    <div class="dash-modal-backdrop" data-close-modal="modal-addresses"></div>
+    <div class="dash-modal-dialog">
+      <div class="dash-modal-header">
+        <h2>Edit addresses</h2>
+        <button type="button" class="dash-modal-close" data-close-modal="modal-addresses">×</button>
+      </div>
+      <div class="dash-modal-body">
+        <label class="dash-field-label">
+          Address line
+          <input id="addr-line" type="text" class="dash-input" placeholder="Street and number" />
+        </label>
+        <label class="dash-field-label">
+          City
+          <input id="addr-city" type="text" class="dash-input" placeholder="City" />
+        </label>
+        <label class="dash-field-label">
+          Postcode
+          <input id="addr-zip" type="text" class="dash-input" placeholder="ZIP / Postcode" />
+        </label>
+      </div>
+      <div class="dash-modal-footer">
+        <button type="button" class="btn btn-ghost" data-close-modal="modal-addresses">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-save-addresses">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal : Payment methods (demo) -->
+  <div id="modal-payments" class="dash-modal hidden">
+    <div class="dash-modal-backdrop" data-close-modal="modal-payments"></div>
+    <div class="dash-modal-dialog">
+      <div class="dash-modal-header">
+        <h2>Add payment method</h2>
+        <button type="button" class="dash-modal-close" data-close-modal="modal-payments">×</button>
+      </div>
+      <div class="dash-modal-body">
+        <label class="dash-field-label">
+          Card label
+          <input id="pay-label" type="text" class="dash-input" placeholder="e.g. Visa personal" />
+        </label>
+        <label class="dash-field-label">
+          Last 4 digits (demo)
+          <input id="pay-last4" type="text" maxlength="4" class="dash-input" placeholder="1234" />
+        </label>
+        <p class="dash-small-text">
+          This is a demo field, not a real payment form.
+        </p>
+      </div>
+      <div class="dash-modal-footer">
+        <button type="button" class="btn btn-ghost" data-close-modal="modal-payments">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-save-payments">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal : Cleaning preferences -->
+  <div id="modal-preferences" class="dash-modal hidden">
+    <div class="dash-modal-backdrop" data-close-modal="modal-preferences"></div>
+    <div class="dash-modal-dialog">
+      <div class="dash-modal-header">
+        <h2>Edit cleaning preferences</h2>
+        <button type="button" class="dash-modal-close" data-close-modal="modal-preferences">×</button>
+      </div>
+      <div class="dash-modal-body">
+        <label class="dash-field-label">
+          Products
+          <select id="form-pref-products" class="dash-input">
+            <option value="No preference">No preference</option>
+            <option value="Use my products">Use my products</option>
+            <option value="Use your products">Use your products</option>
+          </select>
+        </label>
+
+        <label class="dash-field-label">
+          Pets at home
+          <select id="form-pref-pets" class="dash-input">
+            <option value="Not specified">Not specified</option>
+            <option value="No pets">No pets</option>
+            <option value="Pets at home">Pets at home</option>
+          </select>
+        </label>
+
+        <label class="dash-field-label">
+          Language
+          <select id="form-pref-language" class="dash-input">
+            <option value="English">English</option>
+            <option value="French">French</option>
+          </select>
+        </label>
+
+        <label class="dash-field-label">
+          Access notes
+          <textarea
+            id="form-pref-access"
+            rows="3"
+            class="dash-input"
+            placeholder="Door code, concierge, special instructions"
+          ></textarea>
+        </label>
+      </div>
+      <div class="dash-modal-footer">
+        <button type="button" class="btn btn-ghost" data-close-modal="modal-preferences">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-save-preferences">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOUVEAU : Modal profil client -->
+  <div id="modal-profile" class="dash-modal hidden">
+    <div class="dash-modal-backdrop" data-close-modal="modal-profile"></div>
+    <div class="dash-modal-dialog">
+      <div class="dash-modal-header">
+        <h2>Edit profile and contact details</h2>
+        <button type="button" class="dash-modal-close" data-close-modal="modal-profile">×</button>
+      </div>
+      <div class="dash-modal-body">
+        <label class="dash-field-label">
+          Name
+          <input id="profile-name-input" type="text" class="dash-input" placeholder="Your full name" />
+        </label>
+        <label class="dash-field-label">
+          Email
+          <input id="profile-email-input" type="email" class="dash-input" placeholder="you@example.com" />
+        </label>
+        <label class="dash-field-label">
+          Phone
+          <input id="profile-phone-input" type="text" class="dash-input" placeholder="(optional)" />
+        </label>
+        <label class="dash-field-label">
+          Default address
+          <input id="profile-address-input" type="text" class="dash-input" placeholder="(not set yet)" />
+        </label>
+        <p class="dash-small-text">
+          These details are used to pre‑fill your bookings and help cleaners contact you if needed.
+        </p>
+      </div>
+      <div class="dash-modal-footer">
+        <button type="button" class="btn btn-ghost" data-close-modal="modal-profile">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-save-profile">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal profil public cleaner -->
+  <div class="modal-backdrop" id="cleaner-profile-modal" style="display:none;">
+    <div class="modal">
+      <button class="modal-close" id="cleaner-profile-close" aria-label="Close">×</button>
+      <h2 id="cp-name">Cleaner name</h2>
+      <p id="cp-city" class="dash-small-text"></p>
+      <p id="cp-experience" class="dash-small-text"></p>
+      <p id="cp-services" class="dash-small-text"></p>
+      <div class="dash-small-text">
+        <span id="cp-rating-stars"></span>
+        <span id="cp-rating-meta" style="margin-left:8px;"></span>
+      </div>
+      <div id="cp-reviews" class="dash-reviews-list" style="margin-top:12px;"></div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/auth-header.js"></script>
+</body>
+</html>

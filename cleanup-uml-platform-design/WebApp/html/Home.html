@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CleanUp — On‑Demand Home Cleaning</title>
+  <meta name="description" content="Book trusted home cleaners in minutes. Verified pros, flexible scheduling, secure payment, and real‑time updates." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/Home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a href="Home.html" class="brand">
+        <!-- Logo image -->
+        <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+        <span>CleanUp</span>
+      </a>
+      <nav class="nav-actions">
+        <span id="nav-hello" class="nav-hello" style="display:none; margin-right: 1rem;"></span>
+
+        <a href="../html/Services.html" class="btn btn-ghost hide-sm" id="nav-services">Services</a>
+        <a href="../html/Dashboard.html" class="btn btn-ghost" id="nav-dashboard">Dashboard</a>
+
+        <a href="../html/Sign_In.html" class="btn btn-ghost" id="nav-sign-in">Sign in</a>
+        <a href="../html/Create_Account.html" class="btn btn-primary" id="nav-create-account">Create account</a>
+
+        <a href="#" class="btn btn-primary" id="nav-logout" style="display:none;">Sign out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==== VUE CLIENT : HOME ACTUEL ==== -->
+    <div id="home-customer">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>Book home cleaning, anytime</h1>
+            <p>Verified professionals, insurance included, flexible schedules, and secure online payment with live status updates.</p>
+            <div class="trust">
+              <div class="trust-item">✅ Vetted cleaners</div>
+              <div class="trust-item">🛡️ Secure payment</div>
+              <div class="trust-item">⭐ 4.8/5 average</div>
+            </div>
+
+            <div class="hero-video">
+              <video
+                src="../Video/videoplayback.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+          </div>
+
+          <div class="card booking">
+            <h3>Book now</h3>
+            <!-- id pour le scroll et la réservation -->
+            <form id="bookingForm" action="#" method="post">
+              <div class="fields">
+                <div class="field full">
+                  <label class="label" for="address">Address</label>
+                  <input class="input" type="text" id="address" name="address" placeholder="Street, number, city" required>
+                </div>
+                <div class="field">
+                  <label class="label" for="date">Date</label>
+                  <input class="input" type="date" id="date" name="date" required>
+                </div>
+                <div class="field">
+                  <label class="label" for="time">Time</label>
+                  <input class="input" type="time" id="time" name="time" required>
+                </div>
+                <div class="field">
+                  <label class="label" for="duration">Duration</label>
+                  <select class="select" id="duration" name="duration">
+                    <option value="2">2h</option>
+                    <option value="3">3h</option>
+                    <option value="4">4h</option>
+                    <option value="5">5h</option>
+                  </select>
+                </div>
+
+                <!-- Prix choisi par le client -->
+                <div class="field">
+                  <label class="label" for="customer-price">Your price (per hour)</label>
+                  <input
+                    class="input"
+                    type="number"
+                    id="customer-price"
+                    name="customerPrice"
+                    min="1"
+                    step="1"
+                    placeholder="e.g. 18"
+                  >
+                </div>
+
+                <div class="field">
+                  <label class="label" for="type">Service type</label>
+                  <select class="select" id="type" name="type">
+                    <option>Regular cleaning</option>
+                    <option>Deep spring clean</option>
+                    <option>Move‑out clean</option>
+                    <option>Windows</option>
+                    <option>Ironing</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label" for="freq">Frequency</label>
+                  <select class="select" id="freq" name="freq">
+                    <option>One‑time</option>
+                    <option>Weekly</option>
+                    <option>Bi‑weekly</option>
+                    <option>Monthly</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label class="label" for="notes">Instructions (optional)</label>
+                  <input class="input" type="text" id="notes" name="notes" placeholder="Door code, priority rooms…">
+                </div>
+              </div>
+              <div class="inline-actions">
+                <button type="button" class="tag">+ Pets</button>
+                <button type="button" class="tag">+ Supplies provided</button>
+                <button type="button" class="tag">+ Eco products</button>
+              </div>
+              <div class="cta">
+                <button type="submit" class="btn btn-primary" id="see-cleaners-btn">See cleaners</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section">
+        <div class="container">
+          <h2>Popular services</h2>
+          <div class="grid">
+            <article class="service">
+              <div class="service-top">
+                <span class="icon">🧹</span>
+                <div>
+                  <h3>Regular cleaning</h3>
+                  <small class="muted">Kitchen, bathroom, floors</small>
+                </div>
+              </div>
+              <p>Ongoing home care by punctual, qualified professionals.</p>
+              <!-- Scroll vers le formulaire -->
+              <a href="#bookingForm" class="btn btn-ghost">Book</a>
+            </article>
+            <article class="service">
+              <div class="service-top">
+                <span class="icon">🧽</span>
+                <div>
+                  <h3>Deep clean</h3>
+                  <small class="muted">Spring or seasonal</small>
+                </div>
+              </div>
+              <p>A thorough reset with attention to details and overlooked areas.</p>
+              <a href="#bookingForm" class="btn btn-ghost">Book</a>
+            </article>
+            <article class="service">
+              <div class="service-top">
+                <span class="icon">📦</span>
+                <div>
+                  <h3>Move‑out clean</h3>
+                  <small class="muted">Before inspection</small>
+                </div>
+              </div>
+              <p>Deep cleaning to return your place spotless before handover.</p>
+              <a href="#bookingForm" class="btn btn-ghost">Book</a>
+            </article>
+            <article class="service">
+              <div class="service-top">
+                <span class="icon">🪟</span>
+                <div>
+                  <h3>Windows</h3>
+                  <small class="muted">Inside and outside</small>
+                </div>
+              </div>
+              <p>Streak‑free windows with professional equipment.</p>
+              <a href="#bookingForm" class="btn btn-ghost">Book</a>
+            </article>
+          </div>
+          <div class="band">
+            💡 Tip: create an account and save your preferences to book in 10 seconds next time.
+          </div>
+        </div>
+      </section>
+
+      <!-- Nearby cleaners -->
+      <section class="section">
+        <div class="container">
+          <h2>Cleaners near you</h2>
+          <div class="pros">
+            <article class="card pro">
+              <div class="pro-top">
+                <div class="avatar"></div>
+                <div>
+                  <strong>Aïcha D.</strong>
+                  <div class="rating">⭐ 4.9 · 120 jobs</div>
+                </div>
+              </div>
+              <div class="chips">
+                <span class="chip">Kitchen specialist</span>
+                <span class="chip">Eco products</span>
+                <span class="chip">Pets OK</span>
+              </div>
+            </article>
+            <article class="card pro">
+              <div class="pro-top">
+                <div class="avatar"></div>
+                <div>
+                  <strong>Lucas P.</strong>
+                  <div class="rating">⭐ 4.8 · 98 jobs</div>
+                </div>
+              </div>
+              <div class="chips">
+                <span class="chip">Windows</span>
+                <span class="chip">Fast</span>
+                <span class="chip">Supplies provided</span>
+              </div>
+            </article>
+            <article class="card pro">
+              <div class="pro-top">
+                <div class="avatar"></div>
+                <div>
+                  <strong>Sara M.</strong>
+                  <div class="rating">⭐ 4.7 · 143 jobs</div>
+                </div>
+              </div>
+              <div class="chips">
+                <span class="chip">Move‑out</span>
+                <span class="chip">Disinfection</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section class="section">
+        <div class="container">
+          <h2>Trusted by customers</h2>
+          <div class="reviews">
+            <article class="card review">
+              <strong>Clemence</strong>
+              <p>Great service, easy booking, and an amazing cleaner.</p>
+            </article>
+            <article class="card review">
+              <strong>Yanis</strong>
+              <p>Booked next‑day cleaning and everything went smoothly.</p>
+            </article>
+            <article class="card review">
+              <strong>Lou</strong>
+              <p>Transparent pricing and clear communication, highly recommend.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==== VUE NETTOYEUR : PROPOSER SES SERVICES ==== -->
+    <section id="home-cleaner" class="section section-cleaner" style="display:none;">
+      <div class="container">
+        <!-- Hero nettoyeur -->
+        <div class="cleaner-hero">
+          <div class="cleaner-hero-text">
+            <p class="cleaner-eyebrow">For cleaners</p>
+            <h1>Share your cleaning skills and get booked</h1>
+            <p>
+              Create a professional offer with your price, areas and description.
+              Customers will see this on your profile and can book you in a few clicks.
+            </p>
+            <div class="cleaner-pills">
+              <span class="pill">Set your own rate</span>
+              <span class="pill">Choose your area</span>
+              <span class="pill">Keep your schedule flexible</span>
+            </div>
+          </div>
+          <div class="cleaner-hero-card">
+            <div class="cleaner-hero-stat">
+              <span class="label">Potential jobs / week</span>
+              <span class="value">10+</span>
+            </div>
+            <div class="cleaner-hero-stat">
+              <span class="label">Average rating</span>
+              <span class="value">4.8★</span>
+            </div>
+            <div class="cleaner-hero-stat">
+              <span class="label">Top cleaners income</span>
+              <span class="value">€800+/month</span>
+            </div>
+            <small class="hint">Numbers shown are examples and can vary.</small>
+          </div>
+        </div>
+
+        <!-- Grille cartes : on garde seulement les deux cartes latérales -->
+        <div class="cleaner-grid">
+          <!-- Carte : résumé profil -->
+          <article class="card cleaner-card cleaner-card-side">
+            <h3>Profile checklist</h3>
+            <p class="muted">A complete profile helps you get more bookings.</p>
+            <ul class="checklist">
+              <li>✓ Clear profile photo</li>
+              <li>✓ Short “About me” text</li>
+              <li>✓ At least one service with price</li>
+              <li>✓ Main area and availability set</li>
+            </ul>
+            <button
+              type="button"
+              class="btn btn-ghost"
+              onclick="window.location.href='../html/Dashboard.html'"
+            >
+              Open my profile
+            </button>
+          </article>
+
+          <!-- Carte : conseils -->
+          <article class="card cleaner-card cleaner-card-side">
+            <h3>Tips to stand out</h3>
+            <ul class="tips-list">
+              <li>Reply quickly when you receive a new request.</li>
+              <li>Mention if you bring your own products or equipment.</li>
+              <li>Ask customers to leave a review after each job.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container foot-grid">
+      <div class="foot">
+        <div class="brand">
+          <!-- Logo image aussi dans le footer -->
+          <img src="../photo/image.png" alt="CleanUp logo" class="logo">
+          <span>CleanUp</span>
+        </div>
+        <p class="legal">On‑demand home cleaning booking platform, available 7 days a week.</p>
+      </div>
+      <div class="foot">
+        <h4>Company</h4>
+        <div class="links">
+          <a href="../html/About.html">About</a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Help</h4>
+        <div class="links">
+          <a href="../html/Contact.html">Support</a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Legal</h4>
+        <div class="links">
+          <a href="../html/Termes_of_Service.html">Terms</a>
+          <a href="../html/Privacy_Policy.html">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <div class="container legal">© 2025 CleanUp. All rights reserved.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/Home.js"></script>
+  <script src="../js/auth-header.js"></script>
+
+  <!-- Script : bascule client / cleaner -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const role = localStorage.getItem("role");
+      const homeCustomer = document.getElementById("home-customer");
+      const homeCleaner  = document.getElementById("home-cleaner");
+
+      if (role === "cleaner") {
+        if (homeCustomer) homeCustomer.style.display = "none";
+        if (homeCleaner)  homeCleaner.style.display  = "block";
+      } else {
+        if (homeCustomer) homeCustomer.style.display = "block";
+        if (homeCleaner)  homeCleaner.style.display  = "none";
+      }
+    });
+  </script>
+</body>
+</html>
